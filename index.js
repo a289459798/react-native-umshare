@@ -24,6 +24,11 @@ class UMShare extends NativeEventEmitter {
 
 
     }
+
+    share(title) {
+
+        UMShareModule.share(title);
+    }
 }
 
 UMShare = new UMShare();
