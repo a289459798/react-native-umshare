@@ -1,0 +1,26 @@
+{
+  "name": "react-native-umshare",
+  "version": "1.0.0",
+  "description": "友盟分享和第三方登录",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a289459798/react-native-umshare.git"
+  },
+  "keywords": [
+    "react-native",
+    "share",
+    "weixin",
+    "qq",
+    "sina"
+  ],
+  "author": "zhangzy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a289459798/react-native-umshare/issues"
+  },
+  "homepage": "https://github.com/a289459798/react-native-umshare#readme"
+}
