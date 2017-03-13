@@ -21,13 +21,67 @@ class UMShare extends NativeEventEmitter {
 
         // 初始状态
         this.state = {};
+    }
 
+    /**
+     * 初始化分享参数
+     * @param appkey
+     * @param sharePlatforms
+     * @param debug
+     */
+    initShare(appkey: string, sharePlatforms: Object, debug: boolean) {
+
+        UMShareModule.initShare(appkey, sharePlatforms, debug);
+    }
+
+    /**
+     *
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    share(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.share(title, desc, thumb, link)
+                .then((data) => {
+                callback(data);
+            }, (error) => {
+                errorCallback(error);
+            });
+        });
 
     }
 
-    share(title) {
+    /**
+     * 微信登录
+     * @returns {Promise}
+     */
+    loginWX() {
+        return new Promise(function(callback, errorCallback) {
+            UMShareModule.login("weixin")
+                .then((data) => {
+                callback(data);
+            }, (error) => {
+                errorCallback(error);
+            });
+        });
+    }
 
-        UMShareModule.share(title);
+    /**
+     * QQ登录
+     * @returns {Promise}
+     */
+    loginQQ() {
+        return new Promise(function(callback, errorCallback) {
+            UMShareModule.login("qq")
+                .then((data) => {
+                callback(data);
+            }, (error) => {
+                errorCallback(error);
+            });
+        });
     }
 }
 

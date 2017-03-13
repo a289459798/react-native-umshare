@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <React/RCTEventEmitter.h>
+#import <React/RCTBridgeModule.h>
 
-@interface RCTUMShareModule : RCTEventEmitter <RCTBridgeModule>
+@interface RCTUMShareModule : NSObject <RCTBridgeModule>
 
 @end

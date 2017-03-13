@@ -12,6 +12,7 @@ QQ群: 161263093
 ### 友盟SDK版本
 
 Android：v6.4.0(精简版)
+IOS: v6.3.0
 
 ### 准备工作
 
@@ -22,23 +23,57 @@ Android：v6.4.0(精简版)
 
 ### 安装
 
+暂未提交到npmjs
+
+
 ### Android
 
-设置友盟平台的appkey
+添加Activity
+
+1. QQ
+
 ```
-<meta-data android:name="UMENG_APPKEY"
-           android:value="58c4e48a82b6350290000f20" > </meta-data>
+<activity
+    android:name="com.umeng.qq.tencent.AuthActivity"
+    android:launchMode="singleTask"
+    android:noHistory="true" >
+
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="tencent+您的QQ appkey" />
+    </intent-filter>
+</activity>
+
+<activity
+    android:name="com.umeng.qq.tencent.AssistActivity"
+    android:screenOrientation="portrait"
+    android:theme="@android:style/Theme.Translucent.NoTitleBar"
+    android:configChanges="orientation|keyboardHidden|screenSize"/>
 ```
+
+2. 微信
+
+```
+<activity
+    android:name=".wxapi.WXEntryActivity"
+    android:configChanges="keyboardHidden|orientation|screenSize"
+    android:exported="true"
+    android:screenOrientation="portrait"
+    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+```
+需要手动在包名下添加`wxapi.WXEntryActivity`文件，继承`WXCallbackActivity`
+
 ### IOS
 
 
 1. 在项目的的`Build Settings` 中搜索 `header` 找到 `Framework Search Paths` 添加 `$(SRCROOT)/../node_modules/react-native-umshare/ios/RCTUMShareModule/RCTUMShareModule/UMSocial/SocialFrameworks`
 
-2. 在项目的的`Build Settings` 中搜索 `header` 找到 `Header Search Paths` 添加 `$(SRCROOT)/../node_modules/react-native-umshare/ios/RCTUMShareModule/RCTUMShareModule`
 
-3. 将 `Libraries` -> `RCTUMShareModule.xcodeproj` -> `RCTUMShareModule` -> `UMSocial` -> `SocialFrameworks` 下面的所有`.framework` 文件拖到您的主工程下，不需要勾选 `Copy items if needed`
+2. 将 `Libraries` -> `RCTUMShareModule.xcodeproj` -> `RCTUMShareModule` -> `UMSocial` -> `SocialFrameworks` 下面的所有`.framework` 文件拖到您的主工程下，不需要勾选 `Copy items if needed`
 
-4. 添加依赖库
+3. 添加依赖库
 	- ibsqlite3.tbd
 	- CoreGraphics.framework
 	- SystemConfiguration.framework
@@ -46,7 +81,7 @@ Android：v6.4.0(精简版)
 	- libz.tbd
 	- ImageIO.framework
 
-5. 配置SSO白名单
+4. 配置SSO白名单
 
 ```
 <key>LSApplicationQueriesSchemes</key>
@@ -92,7 +127,7 @@ Android：v6.4.0(精简版)
 </array>
 ```
 
-6. URL Scheme
+5. URL Scheme
 	- 微信  
 		微信appKey -> wxdc1e388c3822c80b
 	- QQ
@@ -105,24 +140,96 @@ Android：v6.4.0(精简版)
     - 新浪微博
     	“wb”+新浪appKey -> wb3921700954
 
-7. 初始化分享
+### 使用方式
+
+先初始化参数
 
 ```
-//AppDelegate.m
+import UMShare from 'react-native-umshare';
+...
 
-#import "UMShareManage.h"
+// 第二个参数决定在分享界面的排序1_、2_、3_为前缀
+UMShare.initShare("友盟appkey", 
+	{
+        "1_weixin": {
+            appkey: "",
+            appSecret: "",
+            redirectURL: "",
+        },
+        "2_qq": {
+            appkey: "",
+            appSecret: "",
+            redirectURL: "",
+        },
+        "3_sina": {
+            appkey: "",
+            appSecret: "",
+            redirectURL: "",
+        },
+    },
+    false);
+```
 
-- (BOOL)application:(UIApplication *)application 	didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-	// 1_,2_,3_ 设置分享平台排列的顺序
-    ...
-    [UMShareManage initShare:@"您的友盟appkey"
-              SharePlatforms:@{
-                               @"1_weixin": @{@"appkey": @"微信appkey", @"appSecret": @"微信appSecret", @"redirectURL": @""},
-                               @"2_qq": @{@"appkey": @"QQappkey", @"appSecret": @"QQappSecret", @"redirectURL": @""},
-                               @"3_sina": @{@"appkey": @"新浪appkey", @"appSecret": @"新浪appSecret", @"redirectURL": @""}
-                               }
-               OpenLog:YES];
-   ...
-}
+调用分享
+
+```
+import UMShare from 'react-native-umshare';
+...
+UMShare.share("标题", "简介", "缩略图地址", "链接地址")
+.then(() => {
+	// 成功
+}, (error) => {
+	// 失败
+})
+```
+
+调用登录
+```
+UMShare.loginQQ()
+    .then((data) => {
+        console.log(data);
+    }, (error) => {
+        console.log(error)
+    })
+
+UMShare.loginWX()
+    .then((data) => {
+        console.log(data);
+    }, (error) => {
+        console.log(error)
+    })
+```
+
+### API
+
+```
+
+/**
+ * 初始化分享参数
+ * @param appkey
+ * @param sharePlatforms
+ * @param debug
+ */
+initShare(appkey: string, sharePlatforms: Object, debug: boolean);
+
+/**
+ * 
+ * @param title
+ * @param desc
+ * @param thumb
+ * @param link
+ */
+share(title, desc, thumb, link);
+
+/**
+ * 微信登录
+ * @returns {Promise}
+ */
+loginWX();
+
+/**
+ * QQ登录
+ * @returns {Promise}
+ */
+loginQQ();
 ```

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2B1277591E75233F00006937 /* RCTUMShareModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1277581E75233F00006937 /* RCTUMShareModule.m */; };
 		2B12775A1E75233F00006937 /* RCTUMShareModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2B1277571E75233F00006937 /* RCTUMShareModule.h */; };
-		2B31E06D1E7678F9006DE3FB /* UMShareManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B31E06C1E7678F9006DE3FB /* UMShareManage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,8 +67,6 @@
 		2B31E04E1E75A759006DE3FB /* libUMSocialLog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialLog.a; sourceTree = "<group>"; };
 		2B31E04F1E75A759006DE3FB /* UMSocialSDKPromptResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKPromptResources.bundle; sourceTree = "<group>"; };
 		2B31E0511E75A759006DE3FB /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
-		2B31E06B1E7678F9006DE3FB /* UMShareManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMShareManage.h; sourceTree = "<group>"; };
-		2B31E06C1E7678F9006DE3FB /* UMShareManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMShareManage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +103,6 @@
 				2B31E0291E75A759006DE3FB /* UMSocial */,
 				2B1277571E75233F00006937 /* RCTUMShareModule.h */,
 				2B1277581E75233F00006937 /* RCTUMShareModule.m */,
-				2B31E06B1E7678F9006DE3FB /* UMShareManage.h */,
-				2B31E06C1E7678F9006DE3FB /* UMShareManage.m */,
 			);
 			path = RCTUMShareModule;
 			sourceTree = "<group>";
@@ -279,7 +274,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B31E06D1E7678F9006DE3FB /* UMShareManage.m in Sources */,
 				2B1277591E75233F00006937 /* RCTUMShareModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
