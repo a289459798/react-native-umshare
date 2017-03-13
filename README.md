@@ -46,7 +46,63 @@ Android：v6.4.0(精简版)
 	- libz.tbd
 	- ImageIO.framework
 
-5. 初始化分享
+5. 配置SSO白名单
+
+```
+<key>LSApplicationQueriesSchemes</key>
+<array>
+    <!-- 微信 URL Scheme 白名单-->
+    <string>wechat</string>
+    <string>weixin</string>
+
+    <!-- 新浪微博 URL Scheme 白名单-->
+    <string>sinaweibohd</string>
+    <string>sinaweibo</string>
+    <string>sinaweibosso</string>
+    <string>weibosdk</string>
+    <string>weibosdk2.5</string>
+
+    <!-- QQ、Qzone URL Scheme 白名单-->
+    <string>mqqapi</string>
+    <string>mqq</string>
+    <string>mqqOpensdkSSoLogin</string>
+    <string>mqqconnect</string>
+    <string>mqqopensdkdataline</string>
+    <string>mqqopensdkgrouptribeshare</string>
+    <string>mqqopensdkfriend</string>
+    <string>mqqopensdkapi</string>
+    <string>mqqopensdkapiV2</string>
+    <string>mqqopensdkapiV3</string>
+    <string>mqqopensdkapiV4</string>
+    <string>mqzoneopensdk</string>
+    <string>wtloginmqq</string>
+    <string>wtloginmqq2</string>
+    <string>mqqwpa</string>
+    <string>mqzone</string>
+    <string>mqzonev2</string>
+    <string>mqzoneshare</string>
+    <string>wtloginqzone</string>
+    <string>mqzonewx</string>
+    <string>mqzoneopensdkapiV2</string>
+    <string>mqzoneopensdkapi19</string>
+    <string>mqzoneopensdkapi</string>
+    <string>mqqbrowser</string>
+    <string>mttbrowser</string>
+
+</array>
+```
+
+6. URL Scheme
+
+![](http://dev.umeng.com/system/images/W1siZiIsIjIwMTYvMDkvMjIvMThfMTlfNDJfOTY3XzExNDc0NTMzODUwXy5waWNfaGQuanBnIl1d/11474533850_.pic_hd.jpg)
+
+| 平台 | 格式 |	举例|备注|
+|--------|--------|
+| 微信 | 微信appKey |wxdc1e388c3822c80b| 无 |
+| QQ | 需要添加两项URL Scheme：1、"tencent"+腾讯QQ互联应用appID  2、“QQ”+腾讯QQ互联应用appID转换成十六进制（不足8位前面补0） |如appID：100424468 1、tencent100424468  2、QQ05fc5b14| QQ05fc5b14为100424468转十六进制而来，因不足8位向前补0，然后加"QQ"前缀 |
+| 新浪微博	 | “wb”+新浪appKey	 |wb3921700954| 无 |
+
+7. 初始化分享
 
 
 ```

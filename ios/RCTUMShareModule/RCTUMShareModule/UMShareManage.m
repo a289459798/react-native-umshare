@@ -10,6 +10,8 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import <UShareUI/UShareUI.h>
 
+static NSDictionary *mSharePlatforms;
+
 @implementation UMShareManage
 
 + (void)initShare:(NSString *)umAppKey SharePlatforms:(NSDictionary *)sharePlatforms OpenLog:(BOOL)openLog {
@@ -35,20 +37,11 @@
         [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:[sina objectForKey:@"appKey"] appSecret:[sina objectForKey:@"appSecret"] redirectURL:[sina objectForKey:@"redirectURL"]];
     }
     
-    // 设置顺序
-    NSMutableArray *sort = [[NSMutableArray alloc] init];
-    [sharePlatforms enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if([key rangeOfString:@"weixin"].location != NSNotFound) {
-            [sort addObject:@(UMSocialPlatformType_WechatSession)];
-            [sort addObject:@(UMSocialPlatformType_WechatTimeLine)];
-        } else if([key rangeOfString:@"qq"].location != NSNotFound) {
-            [sort addObject:@(UMSocialPlatformType_QQ)];
-        } else if([key rangeOfString:@"sina"].location != NSNotFound) {
-            [sort addObject:@(UMSocialPlatformType_Sina)];
-        }
-    }];
-    
-    [UMSocialUIManager setPreDefinePlatforms:sort];
+    mSharePlatforms = sharePlatforms;
+}
+
++ (NSDictionary *)sharePlatforms {
+    return mSharePlatforms;
 }
 
 

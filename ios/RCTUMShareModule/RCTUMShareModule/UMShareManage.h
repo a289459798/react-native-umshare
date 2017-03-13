@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface UMShareManage : NSObject
 
 + (void) initShare:(NSString *)umAppKey SharePlatforms:(NSDictionary *) sharePlatforms OpenLog:(BOOL)openLog;
+
++(NSDictionary *)sharePlatforms;
 
 @end
