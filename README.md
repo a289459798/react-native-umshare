@@ -15,10 +15,10 @@ Android：v6.4.0(精简版)
 
 ### 准备工作
 
-1. 到友盟平台申请账号
-2. 微信开发平台申请
-3. QQ开放平台申请
-4. 新浪开放平台申请
+1. 到友盟平台申请账号 [http://www.umeng.com/](http://www.umeng.com/)
+2. 微信开发平台申请 [http://open.weixin.qq.com/](http://open.weixin.qq.com/)
+3. QQ开放平台申请 [http://open.qq.com/](http://open.qq.com/)
+4. 新浪开放平台申请[http://open.weibo.com/](http://open.weibo.com/)
 
 ### 安装
 
@@ -31,14 +31,10 @@ Android：v6.4.0(精简版)
 ```
 ### IOS
 
-1. 首先在`Info.plist`文件中添加字段 `TencentMapSDK` 值为您在腾讯地图开放平台申请的key
 
-    ```
-    <key>TencentMapSDK</key>
-    <string>您的key</string>
-    ```
+1. 在项目的的`Build Settings` 中搜索 `header` 找到 `Framework Search Paths` 添加 `$(SRCROOT)/../node_modules/react-native-umshare/ios/RCTUMShareModule/RCTUMShareModule/UMSocial/SocialFrameworks`
 
-2. 在项目的的`Build Settings` 中搜索 `header` 找到 `Framework Search Paths` 添加 `$(SRCROOT)/../node_modules/react-native-umshare/ios/RCTUMShareModule/RCTUMShareModule/UMSocial/SocialFrameworks`
+2. 在项目的的`Build Settings` 中搜索 `header` 找到 `Header Search Paths` 添加 `$(SRCROOT)/../node_modules/react-native-umshare/ios/RCTUMShareModule/RCTUMShareModule`
 
 3. 将 `Libraries` -> `RCTUMShareModule.xcodeproj` -> `RCTUMShareModule` -> `UMSocial` -> `SocialFrameworks` 下面的所有`.framework` 文件拖到您的主工程下，不需要勾选 `Copy items if needed`
 
@@ -49,3 +45,26 @@ Android：v6.4.0(精简版)
 	- libc++.tbd
 	- libz.tbd
 	- ImageIO.framework
+
+5. 初始化分享
+
+
+```
+//AppDelegate.m
+
+#import "UMShareManage.h"
+
+- (BOOL)application:(UIApplication *)application 	didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+	// 1_,2_,3_ 设置分享平台排列的顺序
+    ...
+    [UMShareManage initShare:@"您的友盟appkey"
+              SharePlatforms:@{
+                               @"1_weixin": @{@"appkey": @"微信appkey", @"appSecret": @"微信appSecret", @"redirectURL": @""},
+                               @"2_qq": @{@"appkey": @"QQappkey", @"appSecret": @"QQappSecret", @"redirectURL": @""},
+                               @"3_sina": @{@"appkey": @"新浪appkey", @"appSecret": @"新浪appSecret", @"redirectURL": @""}
+                               }
+               OpenLog:YES];
+   ...
+}
+```
