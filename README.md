@@ -93,17 +93,19 @@ Android：v6.4.0(精简版)
 ```
 
 6. URL Scheme
-
-![](http://dev.umeng.com/system/images/W1siZiIsIjIwMTYvMDkvMjIvMThfMTlfNDJfOTY3XzExNDc0NTMzODUwXy5waWNfaGQuanBnIl1d/11474533850_.pic_hd.jpg)
-
-| 平台 | 格式 |	举例|备注|
-|--------|--------|
-| 微信 | 微信appKey |wxdc1e388c3822c80b| 无 |
-| QQ | 需要添加两项URL Scheme：1、"tencent"+腾讯QQ互联应用appID  2、“QQ”+腾讯QQ互联应用appID转换成十六进制（不足8位前面补0） |如appID：100424468 1、tencent100424468  2、QQ05fc5b14| QQ05fc5b14为100424468转十六进制而来，因不足8位向前补0，然后加"QQ"前缀 |
-| 新浪微博	 | “wb”+新浪appKey	 |wb3921700954| 无 |
+	- 微信  
+		微信appKey -> wxdc1e388c3822c80b
+	- QQ
+		需要添加两项URL Scheme：
+        1、"tencent"+腾讯QQ互联应用appID  
+        2、“QQ”+腾讯QQ互联应用appID转换成十六进制（不足8位前面补0）
+        如appID：100424468 
+        1、tencent100424468  
+        2、QQ05fc5b14| QQ05fc5b14为100424468转十六进制而来，因不足8位向前补0，然后加"QQ"前缀
+    - 新浪微博
+    	“wb”+新浪appKey -> wb3921700954
 
 7. 初始化分享
-
 
 ```
 //AppDelegate.m
