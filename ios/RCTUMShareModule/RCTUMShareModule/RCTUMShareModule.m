@@ -127,19 +127,9 @@ RCT_REMAP_METHOD(login,
             } else {
                 UMSocialUserInfoResponse *resp = result;
                 
-                // 授权信息
-                NSLog(@"uid: %@", resp.uid);
-                NSLog(@"openid: %@", resp.openid);
-                NSLog(@"QQ accessToken: %@", resp.accessToken);
-                NSLog(@"QQ expiration: %@", resp.expiration);
+                NSDictionary *data = @{@"uid": resp.uid, @"openid": resp.openid, @"accessToken": resp.accessToken, @"expiration": resp.expiration, @"name": resp.name, @"iconurl": resp.iconurl, @"gender": resp.gender, @"originalResponse": resp.originalResponse};
                 
-                // 用户信息
-                NSLog(@"name: %@", resp.name);
-                NSLog(@"iconurl: %@", resp.iconurl);
-                NSLog(@"gender: %@", resp.gender);
-                
-                // 第三方平台SDK源数据
-                NSLog(@"originalResponse: %@", resp.originalResponse);
+                resolve(data);
             }
         }];
     });

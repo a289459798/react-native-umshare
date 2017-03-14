@@ -9,9 +9,7 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMWeb;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by zzy on 2017/3/9.
@@ -50,7 +48,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
                 @Override
                 public void onResult(SHARE_MEDIA share_media) {
-                    promise.resolve("");
+                    promise.resolve("分享成功");
                 }
 
                 @Override
@@ -80,11 +78,11 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
             keys[i] = key;
             ReadableMap obj = sharePlatforms.getMap(key);
             if (key.endsWith("weixin")) {
-                PlatformConfig.setWeixin(obj.getString("appkey"), obj.getString("appSecret"));
+                PlatformConfig.setWeixin(obj.getString("appKey"), obj.getString("appSecret"));
             } else if (key.endsWith("qq")) {
-                PlatformConfig.setQQZone(obj.getString("appkey"), obj.getString("appSecret"));
+                PlatformConfig.setQQZone(obj.getString("appKey"), obj.getString("appSecret"));
             } else if (key.endsWith("sina")) {
-                PlatformConfig.setSinaWeibo(obj.getString("appkey"), obj.getString("appSecret"), obj.getString("redirectURL"));
+                PlatformConfig.setSinaWeibo(obj.getString("appKey"), obj.getString("appSecret"), obj.getString("redirectURL"));
             }
             i++;
         }
@@ -121,7 +119,17 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
             @Override
             public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-                promise.resolve("");
+
+                WritableMap writableMap = Arguments.createMap();
+
+                Set<String> keySet = map.keySet();
+                Iterator<String> iter = keySet.iterator();
+                while (iter.hasNext()) {
+                    String key = iter.next();
+                    writableMap.putString(key, map.get(key));
+                }
+
+                promise.resolve(writableMap);
 
             }
 
