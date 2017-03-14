@@ -45,8 +45,9 @@ RCT_REMAP_METHOD(share,
                 [sort addObject:@(UMSocialPlatformType_Sina)];
             }
         }];
-                
+        
         [UMSocialUIManager setPreDefinePlatforms:sort];
+        
         
         [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
             
@@ -90,8 +91,10 @@ RCT_EXPORT_METHOD(initShare:(NSString *)umAppKey SharePlatforms:(NSDictionary *)
         /* 设置友盟appkey */
         [[UMSocialManager defaultManager] setUmSocialAppkey:umAppKey];
         
-        [_sharePlatforms enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [sharePlatforms enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+
             if([key rangeOfString:@"weixin"].location != NSNotFound) {
+                
                 [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:[obj objectForKey:@"appKey"] appSecret:[obj objectForKey:@"appSecret"] redirectURL:[obj objectForKey:@"redirectURL"]];
             } else if([key rangeOfString:@"qq"].location != NSNotFound) {
                 [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:[obj objectForKey:@"appKey"] appSecret:[obj objectForKey:@"appSecret"] redirectURL:[obj objectForKey:@"redirectURL"]];
@@ -99,7 +102,6 @@ RCT_EXPORT_METHOD(initShare:(NSString *)umAppKey SharePlatforms:(NSDictionary *)
                 [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:[obj objectForKey:@"appKey"] appSecret:[obj objectForKey:@"appSecret"] redirectURL:[obj objectForKey:@"redirectURL"]];
             }
         }];
-
         _sharePlatforms = sharePlatforms;
     });
     
