@@ -32,6 +32,7 @@ react-native link
 
 ### Android
 
+
 添加Activity
 
 1. QQ
@@ -68,6 +69,28 @@ react-native link
     android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 ```
 需要手动在包名下添加`wxapi.WXEntryActivity`文件，继承`WXCallbackActivity`
+
+3. 新浪
+
+```
+<activity
+	android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:theme="@style/Theme.UMDefault"
+            android:excludeFromRecents="true"/>
+```
+
+android 需要编译出来的apk文件的签名和申请微信和QQ时填写的一致，开发过程中可以在build.gradle 文件加入以下代码
+
+```
+signingConfigs {
+        debug {
+            storeFile file('keystore 文件路径')
+            storePassword "keydtore 密码"
+            keyAlias "keydtore 别名"
+            keyPassword "keydtore 别名密码"
+        }
+    }
+```
 
 ### IOS
 
