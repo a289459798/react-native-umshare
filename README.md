@@ -27,7 +27,6 @@ IOS: v6.3.0
 npm install react-native-umshare --save
 react-native link
 ```
-暂未提交到npmjs
 
 
 ### Android
