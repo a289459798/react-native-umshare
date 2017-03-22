@@ -36,7 +36,7 @@ react-native link
 
 1. QQ
 
-```
+```xml
 <activity
     android:name="com.umeng.qq.tencent.AuthActivity"
     android:launchMode="singleTask"
@@ -59,7 +59,7 @@ react-native link
 
 2. 微信
 
-```
+```xml
 <activity
     android:name=".wxapi.WXEntryActivity"
     android:configChanges="keyboardHidden|orientation|screenSize"
@@ -71,7 +71,7 @@ react-native link
 
 3. 新浪
 
-```
+```xml
 <activity
 	android:name="com.umeng.socialize.editorpage.ShareActivity"
             android:theme="@style/Theme.UMDefault"
@@ -170,7 +170,7 @@ signingConfigs {
 
 先初始化参数
 
-```
+```js
 import UMShare from 'react-native-umshare';
 ...
 
@@ -198,7 +198,7 @@ UMShare.initShare("友盟appkey",
 
 调用分享
 
-```
+```js
 import UMShare from 'react-native-umshare';
 ...
 UMShare.share("标题", "简介", "缩略图地址", "链接地址")
@@ -210,7 +210,7 @@ UMShare.share("标题", "简介", "缩略图地址", "链接地址")
 ```
 
 调用登录
-```
+```js
 UMShare.loginQQ()
     .then((data) => {
         console.log(data);
@@ -228,7 +228,7 @@ UMShare.loginWX()
 
 ### API
 
-```
+```js
 
 /**
  * 初始化分享参数
