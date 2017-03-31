@@ -63,6 +63,57 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
+    public void shareWithPlatformType(int platform, String title, String desc, String thumb, String link, final Promise promise) {
+
+        SHARE_MEDIA plat = SHARE_MEDIA.WEIXIN;
+        switch (platform) {
+            case 1:
+                plat = SHARE_MEDIA.WEIXIN;
+                break;
+            case 2:
+                plat = SHARE_MEDIA.WEIXIN_CIRCLE;
+                break;
+            case 4:
+                plat = SHARE_MEDIA.QQ;
+                break;
+            case 5:
+                plat = SHARE_MEDIA.QZONE;
+                break;
+            case 0:
+                plat = SHARE_MEDIA.SINA;
+                break;
+        }
+
+        UMImage image = new UMImage(getCurrentActivity(), thumb);
+        UMWeb web = new UMWeb(link);
+        web.setTitle(title);//标题
+        web.setThumb(image);  //缩略图
+        web.setDescription(desc);//描述
+        new ShareAction(getCurrentActivity()).setPlatform(plat)
+            .withMedia(web)
+            .setCallback(new UMShareListener() {
+                @Override
+                public void onStart(SHARE_MEDIA share_media) {
+
+                }
+
+                @Override
+                public void onResult(SHARE_MEDIA share_media) {
+                    promise.resolve("分享成功");
+                }
+
+                @Override
+                public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                    promise.reject(throwable);
+                }
+
+                @Override
+                public void onCancel(SHARE_MEDIA share_media) {
+                }
+            }).share();
+    }
+
+    @ReactMethod
     public void initShare(String appkey, ReadableMap sharePlatforms, boolean debug) {
         UMShareAPI.init(mContext, appkey);
 
