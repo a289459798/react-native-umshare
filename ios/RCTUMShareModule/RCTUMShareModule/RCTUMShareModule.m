@@ -41,6 +41,7 @@ RCT_REMAP_METHOD(share,
                 [sort addObject:@(UMSocialPlatformType_WechatTimeLine)];
             } else if([key rangeOfString:@"qq"].location != NSNotFound) {
                 [sort addObject:@(UMSocialPlatformType_QQ)];
+                [sort addObject:@(UMSocialPlatformType_Qzone)];
             } else if([key rangeOfString:@"sina"].location != NSNotFound) {
                 [sort addObject:@(UMSocialPlatformType_Sina)];
             }
@@ -75,6 +76,46 @@ RCT_REMAP_METHOD(share,
                 }
             }];
             
+        }];
+        
+    });
+    
+}
+
+RCT_REMAP_METHOD(shareWithPlatformType,
+                 PlatformType: (int) platformType
+                 Title: (NSString *) title
+                 Desc:(NSString *) desc
+                 Thumb:(NSString *) thumb
+                 Link:(NSString *) link
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if(_sharePlatforms == nil) {
+            
+            reject(@-1, @"请先在AppDelegate.m中初始化分享设置", nil);
+            return;
+        }
+        
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        
+        NSString* thumbURL = thumb;
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:desc thumImage:thumbURL];
+        shareObject.webpageUrl = link;
+        
+        messageObject.shareObject = shareObject;
+        
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {
+            if (error) {
+                reject(@-1, @"分享失败", error);
+                UMSocialLogInfo(@"************Share fail with error %@*********",error);
+            } else {
+                
+                resolve(data);
+            }
         }];
         
     });

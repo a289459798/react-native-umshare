@@ -239,13 +239,58 @@ UMShare.loginWX()
 initShare(appkey: string, sharePlatforms: Object, debug: boolean);
 
 /**
- * 
+ * 友盟默认UI分享
  * @param title
  * @param desc
  * @param thumb
  * @param link
  */
 share(title, desc, thumb, link);
+
+/**
+ * 自定义UI, 微信分享
+ * @param title
+ * @param desc
+ * @param thumb
+ * @param link
+ */
+shareWX(title, desc, thumb, link);
+
+/**
+ * 自定义UI, 微信朋友圈分享
+ * @param title
+ * @param desc
+ * @param thumb
+ * @param link
+ */
+shareWXTimeLine(title, desc, thumb, link);
+
+/**
+ * 自定义UI, QQ分享
+ * @param title
+ * @param desc
+ * @param thumb
+ * @param link
+ */
+shareQQ(title, desc, thumb, link);
+
+/**
+ * 自定义UI, QQ空间分享
+ * @param title
+ * @param desc
+ * @param thumb
+ * @param link
+ */
+shareQzone(title, desc, thumb, link);
+
+/**
+ * 自定义UI, 新浪分享
+ * @param title
+ * @param desc
+ * @param thumb
+ * @param link
+ */
+shareSina(title, desc, thumb, link);
 
 /**
  * 微信登录

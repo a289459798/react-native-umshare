@@ -55,6 +55,106 @@ class UMShare extends NativeEventEmitter {
     }
 
     /**
+     * 微信分享
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    shareWX(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareWithPlatformType(1, title, desc, thumb, link)
+                .then((data) => {
+                callback(data);
+        }, (error) => {
+                errorCallback(error);
+            });
+        });
+
+    }
+
+    /**
+     * 微信朋友圈分享
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    shareWXTimeLine(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareWithPlatformType(2, title, desc, thumb, link)
+                .then((data) => {
+                callback(data);
+        }, (error) => {
+                errorCallback(error);
+            });
+        });
+
+    }
+
+    /**
+     * QQ分享
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    shareQQ(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareWithPlatformType(4, title, desc, thumb, link)
+                .then((data) => {
+                callback(data);
+        }, (error) => {
+                errorCallback(error);
+            });
+        });
+
+    }
+
+    /**
+     * QQ空间分享
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    shareQzone(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareWithPlatformType(5, title, desc, thumb, link)
+                .then((data) => {
+                callback(data);
+        }, (error) => {
+                errorCallback(error);
+            });
+        });
+
+    }
+
+    /**
+     * 新浪分享
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    shareSina(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareWithPlatformType(0, title, desc, thumb, link)
+                .then((data) => {
+                callback(data);
+        }, (error) => {
+                errorCallback(error);
+            });
+        });
+
+    }
+
+    /**
      * 微信登录
      * @returns {Promise}
      */
