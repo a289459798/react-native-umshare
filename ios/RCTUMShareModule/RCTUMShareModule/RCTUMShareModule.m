@@ -72,7 +72,7 @@ RCT_REMAP_METHOD(share,
                     UMSocialLogInfo(@"************Share fail with error %@*********",error);
                 } else {
                     
-                    resolve(data);
+                    resolve(@"分享成功");
                 }
             }];
             
@@ -114,7 +114,7 @@ RCT_REMAP_METHOD(shareWithPlatformType,
                 UMSocialLogInfo(@"************Share fail with error %@*********",error);
             } else {
                 
-                resolve(data);
+                resolve(@"分享成功");
             }
         }];
         
