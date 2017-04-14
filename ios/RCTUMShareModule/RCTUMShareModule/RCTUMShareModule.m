@@ -58,9 +58,9 @@ RCT_REMAP_METHOD(share,
             //创建网页内容对象
             NSString* thumbURL = thumb;
             UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:desc thumImage:thumbURL];
+            
             //设置网页地址
             shareObject.webpageUrl = link;
-            
             //分享消息对象设置分享内容对象
             messageObject.shareObject = shareObject;
             
@@ -92,6 +92,26 @@ RCT_REMAP_METHOD(shareWithPlatformType,
                  rejecter:(RCTPromiseRejectBlock)reject)
 {
     
+    if(link != nil) {
+        
+        [self shareWithLink:platformType Title:title Desc:desc Thumb:thumb Link:link resolver:resolve rejecter:reject];
+    } else if(thumb != nil) {
+        [self shareWithImage:platformType Thumb:thumb resolver:resolve rejecter:reject];
+    } else {
+        [self shareWithText:platformType Desc:desc resolver:resolve rejecter:reject];
+    }
+    
+}
+
+- (void) shareWithLink: (int) platformType
+                 Title: (NSString *) title
+                 Desc:(NSString *) desc
+                 Thumb:(NSString *) thumb
+                 Link:(NSString *) link
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject
+{
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         
         if(_sharePlatforms == nil) {
@@ -121,6 +141,76 @@ RCT_REMAP_METHOD(shareWithPlatformType,
     });
     
 }
+
+- (void) shareWithText: (int) platformType
+                 Desc:(NSString *) desc
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if(_sharePlatforms == nil) {
+            
+            reject(@-1, @"请先在AppDelegate.m中初始化分享设置", nil);
+            return;
+        }
+        
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        //设置文本
+        messageObject.text = desc;
+        
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {
+            if (error) {
+                reject(@-1, @"分享失败", error);
+                UMSocialLogInfo(@"************Share fail with error %@*********",error);
+            } else {
+                
+                resolve(@"分享成功");
+            }
+        }];
+        
+    });
+    
+}
+
+- (void) shareWithImage: (int) platformType
+                 Thumb:(NSString *) thumb
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if(_sharePlatforms == nil) {
+            
+            reject(@-1, @"请先在AppDelegate.m中初始化分享设置", nil);
+            return;
+        }
+        
+        //创建分享消息对象
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        //创建图片内容对象
+        UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
+        [shareObject setShareImage:thumb];
+        
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
+        
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {
+            if (error) {
+                reject(@-1, @"分享失败", error);
+                UMSocialLogInfo(@"************Share fail with error %@*********",error);
+            } else {
+                
+                resolve(@"分享成功");
+            }
+        }];
+        
+    });
+    
+}
+
 
 RCT_EXPORT_METHOD(initShare:(NSString *)umAppKey SharePlatforms:(NSDictionary *) sharePlatforms OpenLog:(BOOL)openLog)
 {
