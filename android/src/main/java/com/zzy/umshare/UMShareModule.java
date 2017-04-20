@@ -8,6 +8,8 @@ import com.umeng.socialize.*;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMWeb;
+import com.umeng.socialize.shareboard.SnsPlatform;
+import com.umeng.socialize.utils.ShareBoardlistener;
 
 import java.util.*;
 
@@ -31,50 +33,48 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
-    public void share(String title, String desc, String thumb, String link, final Promise promise) {
+    public void share(final String title, final String desc, final String thumb, final String link, final Promise promise) {
 
-        UMImage image = new UMImage(getCurrentActivity(), thumb);
-        UMWeb web = new UMWeb(link);
-        web.setTitle(title);//标题
-        web.setThumb(image);  //缩略图
-        web.setDescription(desc);//描述
-        new ShareAction(getCurrentActivity()).withMedia(web)
-            .setDisplayList((SHARE_MEDIA[]) mDisplayList.toArray(new SHARE_MEDIA[mDisplayList.size()]))
-            .setCallback(new UMShareListener() {
+        new ShareAction(getCurrentActivity()).setDisplayList(
+            (SHARE_MEDIA[]) mDisplayList.toArray(new SHARE_MEDIA[mDisplayList.size()]))
+            .setShareboardclickCallback(new ShareBoardlistener() {
                 @Override
-                public void onStart(SHARE_MEDIA share_media) {
+                public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
 
-                }
+                    UMImage image = new UMImage(getCurrentActivity(), thumb);
+                    UMWeb web = new UMWeb(link);
+                    web.setTitle(title);//标题
+                    web.setThumb(image);  //缩略图
+                    web.setDescription(desc);//描述
+                    new ShareAction(getCurrentActivity()).withMedia(web)
+                        .setPlatform(share_media)
+                        .setCallback(new UMShareListener() {
+                            @Override
+                            public void onStart(SHARE_MEDIA share_media) {
 
-                @Override
-                public void onResult(SHARE_MEDIA share_media) {
-                    promise.resolve("分享成功");
-                }
+                            }
 
-                @Override
-                public void onError(SHARE_MEDIA share_media, Throwable throwable) {
-                    promise.reject(throwable);
-                }
+                            @Override
+                            public void onResult(SHARE_MEDIA share_media) {
+                                promise.resolve("分享成功");
+                            }
 
-                @Override
-                public void onCancel(SHARE_MEDIA share_media) {
+                            @Override
+                            public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                                promise.reject(throwable);
+                            }
+
+                            @Override
+                            public void onCancel(SHARE_MEDIA share_media) {
+                            }
+                        })
+                        .share();
                 }
             }).open();
     }
 
     @ReactMethod
     public void shareWithPlatformType(int platform, String title, String desc, String thumb, String link, final Promise promise) {
-
-        if (link != null) {
-            this.shareWithLink(platform, title, desc, thumb, link, promise);
-        } else if(thumb != null) {
-            this.shareWithImage(platform, thumb, promise);
-        } else {
-            this.shareWithText(platform, desc, promise);
-        }
-    }
-
-    public void shareWithText(int platform, String desc, final Promise promise) {
 
         SHARE_MEDIA plat = SHARE_MEDIA.WEIXIN;
         switch (platform) {
@@ -95,7 +95,18 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
                 break;
         }
 
-        new ShareAction(getCurrentActivity()).setPlatform(plat)
+        if (link != null) {
+            this.shareWithLink(plat, title, desc, thumb, link, promise);
+        } else if (thumb != null) {
+            this.shareWithImage(plat, thumb, promise);
+        } else {
+            this.shareWithText(plat, desc, promise);
+        }
+    }
+
+    public void shareWithText(SHARE_MEDIA platform, String desc, final Promise promise) {
+
+        new ShareAction(getCurrentActivity()).setPlatform(platform)
             .withText(desc)
             .setCallback(new UMShareListener() {
                 @Override
@@ -119,33 +130,14 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
             }).share();
     }
 
-    public void shareWithLink(int platform, String title, String desc, String thumb, String link, final Promise promise) {
-
-        SHARE_MEDIA plat = SHARE_MEDIA.WEIXIN;
-        switch (platform) {
-            case 1:
-                plat = SHARE_MEDIA.WEIXIN;
-                break;
-            case 2:
-                plat = SHARE_MEDIA.WEIXIN_CIRCLE;
-                break;
-            case 4:
-                plat = SHARE_MEDIA.QQ;
-                break;
-            case 5:
-                plat = SHARE_MEDIA.QZONE;
-                break;
-            case 0:
-                plat = SHARE_MEDIA.SINA;
-                break;
-        }
+    public void shareWithLink(SHARE_MEDIA platform, String title, String desc, String thumb, String link, final Promise promise) {
 
         UMImage image = new UMImage(getCurrentActivity(), thumb);
         UMWeb web = new UMWeb(link);
         web.setTitle(title);//标题
         web.setThumb(image);  //缩略图
         web.setDescription(desc);//描述
-        new ShareAction(getCurrentActivity()).setPlatform(plat)
+        new ShareAction(getCurrentActivity()).setPlatform(platform)
             .withMedia(web)
             .setCallback(new UMShareListener() {
                 @Override
@@ -169,29 +161,10 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
             }).share();
     }
 
-    public void shareWithImage(int platform, String thumb, final Promise promise) {
-
-        SHARE_MEDIA plat = SHARE_MEDIA.WEIXIN;
-        switch (platform) {
-            case 1:
-                plat = SHARE_MEDIA.WEIXIN;
-                break;
-            case 2:
-                plat = SHARE_MEDIA.WEIXIN_CIRCLE;
-                break;
-            case 4:
-                plat = SHARE_MEDIA.QQ;
-                break;
-            case 5:
-                plat = SHARE_MEDIA.QZONE;
-                break;
-            case 0:
-                plat = SHARE_MEDIA.SINA;
-                break;
-        }
+    public void shareWithImage(SHARE_MEDIA platform, String thumb, final Promise promise) {
 
         UMImage image = new UMImage(getCurrentActivity(), thumb);
-        new ShareAction(getCurrentActivity()).setPlatform(plat)
+        new ShareAction(getCurrentActivity()).setPlatform(platform)
             .withMedia(image)
             .setCallback(new UMShareListener() {
                 @Override

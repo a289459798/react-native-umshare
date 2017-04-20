@@ -1,6 +1,6 @@
 {
   "name": "react-native-umshare",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "友盟分享和第三方登录",
   "main": "index.js",
   "scripts": {
