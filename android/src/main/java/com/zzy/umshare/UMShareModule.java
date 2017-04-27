@@ -194,7 +194,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
         UMShareConfig config = new UMShareConfig();
         config.isOpenShareEditActivity(true);
-        UMShareAPI.get(getCurrentActivity()).setShareConfig(config);
+        UMShareAPI.get(mContext).setShareConfig(config);
 
         ReadableMapKeySetIterator readableMapKeySetIterator = sharePlatforms.keySetIterator();
         String[] keys = new String[3];
