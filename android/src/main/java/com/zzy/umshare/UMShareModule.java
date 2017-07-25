@@ -74,6 +74,43 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
+    public void shareImage(final String thumb, final Promise promise) {
+
+        new ShareAction(getCurrentActivity()).setDisplayList(
+            (SHARE_MEDIA[]) mDisplayList.toArray(new SHARE_MEDIA[mDisplayList.size()]))
+            .setShareboardclickCallback(new ShareBoardlistener() {
+                @Override
+                public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
+
+                    UMImage image = new UMImage(getCurrentActivity(), thumb);
+                    new ShareAction(getCurrentActivity()).withMedia(image)
+                        .setPlatform(share_media)
+                        .setCallback(new UMShareListener() {
+                            @Override
+                            public void onStart(SHARE_MEDIA share_media) {
+
+                            }
+
+                            @Override
+                            public void onResult(SHARE_MEDIA share_media) {
+                                promise.resolve("分享成功");
+                            }
+
+                            @Override
+                            public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                                promise.reject(throwable);
+                            }
+
+                            @Override
+                            public void onCancel(SHARE_MEDIA share_media) {
+                            }
+                        })
+                        .share();
+                }
+            }).open();
+    }
+
+    @ReactMethod
     public void shareWithPlatformType(int platform, String title, String desc, String thumb, String link, final Promise promise) {
 
         SHARE_MEDIA plat = SHARE_MEDIA.WEIXIN;

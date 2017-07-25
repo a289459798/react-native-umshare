@@ -82,6 +82,64 @@ RCT_REMAP_METHOD(share,
     
 }
 
+RCT_REMAP_METHOD(shareImage,
+                 Thumb:(NSString *) thumb
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if(_sharePlatforms == nil) {
+            
+            reject(@-1, @"请先在AppDelegate.m中初始化分享设置", nil);
+            return;
+        }
+        // 设置顺序
+        NSMutableArray *sort = [[NSMutableArray alloc] init];
+        
+        [_sharePlatforms enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            if([key rangeOfString:@"weixin"].location != NSNotFound) {
+                [sort addObject:@(UMSocialPlatformType_WechatSession)];
+                [sort addObject:@(UMSocialPlatformType_WechatTimeLine)];
+            } else if([key rangeOfString:@"qq"].location != NSNotFound) {
+                [sort addObject:@(UMSocialPlatformType_QQ)];
+                [sort addObject:@(UMSocialPlatformType_Qzone)];
+            } else if([key rangeOfString:@"sina"].location != NSNotFound) {
+                [sort addObject:@(UMSocialPlatformType_Sina)];
+            }
+        }];
+        
+        [UMSocialUIManager setPreDefinePlatforms:sort];
+        
+        
+        [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+            
+            //创建分享消息对象
+            UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+            //创建图片内容对象
+            UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
+            [shareObject setShareImage:thumb];
+            
+            //分享消息对象设置分享内容对象
+            messageObject.shareObject = shareObject;
+            
+            [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {
+                if (error) {
+                    reject(@-1, @"分享失败", error);
+                    UMSocialLogInfo(@"************Share fail with error %@*********",error);
+                } else {
+                    
+                    resolve(@"分享成功");
+                }
+            }];
+            
+        }];
+        
+    });
+    
+}
+
 RCT_REMAP_METHOD(shareWithPlatformType,
                  PlatformType: (int) platformType
                  Title: (NSString *) title

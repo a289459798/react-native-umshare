@@ -55,6 +55,23 @@ class UMShare extends NativeEventEmitter {
     }
 
     /**
+     *
+     * @param thumb
+     */
+    shareImage(thumb) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareImage(thumb)
+                .then((data) => {
+                    callback(data);
+                }, (error) => {
+                    errorCallback(error);
+                });
+        });
+
+    }
+
+    /**
      * 微信分享
      * @param title
      * @param desc
