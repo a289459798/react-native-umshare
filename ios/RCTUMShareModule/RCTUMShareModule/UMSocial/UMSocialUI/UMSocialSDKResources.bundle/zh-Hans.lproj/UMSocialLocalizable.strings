@@ -179,3 +179,7 @@
 
 "cloudShare_oauth_title" = "授权";
 "cloudShare_oauth_error" = "授权错误";
+
+//UI面板的title和cancel控件的国际化字符串
+"umsocial_shareUI_Title" = "请选择分享平台";
+"umsocial_shareUI_CancelControlText" = "取消分享";
