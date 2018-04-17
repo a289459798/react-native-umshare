@@ -145,7 +145,6 @@ RCT_REMAP_METHOD(shareMiniProgram,
                  Title: (NSString *) title
                  Desc:(NSString *) desc
                  Path:(NSString *) path
-                 Thumb:(NSString *) thumb
                  Link:(NSString *) link
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject)
