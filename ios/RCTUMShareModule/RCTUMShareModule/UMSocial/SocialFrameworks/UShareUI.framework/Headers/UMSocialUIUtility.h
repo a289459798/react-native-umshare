@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <UMSocialCore/UMSocialCore.h>
+#import <UMShare/UMShare.h>
 
 
 /**
@@ -21,6 +21,8 @@
 +(void)configWithPlatformType:(UMSocialPlatformType)platformType withImageName:(NSString**)imageName withPlatformName:(NSString**)platformName;
 
 + (UIImage *)imageNamed:(NSString *)name;
+
++ (NSString *)localizedString:(NSString *)key defaultString:(NSString *)defaultString;
 
 @end
 

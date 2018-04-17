@@ -140,6 +140,69 @@ RCT_REMAP_METHOD(shareImage,
     
 }
 
+RCT_REMAP_METHOD(shareMiniProgram,
+                 Name: (NSString *) name
+                 Title: (NSString *) title
+                 Desc:(NSString *) desc
+                 Path:(NSString *) path
+                 Thumb:(NSString *) thumb
+                 Link:(NSString *) link
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if(_sharePlatforms == nil) {
+            
+            reject(@-1, @"请先在AppDelegate.m中初始化分享设置", nil);
+            return;
+        }
+        // 设置顺序
+        NSMutableArray *sort = [[NSMutableArray alloc] init];
+        
+        [_sharePlatforms enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            if([key rangeOfString:@"weixin"].location != NSNotFound) {
+                [sort addObject:@(UMSocialPlatformType_WechatSession)];
+                [sort addObject:@(UMSocialPlatformType_WechatTimeLine)];
+            }
+        }];
+        
+        [UMSocialUIManager setPreDefinePlatforms:sort];
+        
+        
+        [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+
+            //创建分享消息对象
+            UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+
+            UMShareMiniProgramObject *shareObject = [UMShareMiniProgramObject shareObjectWithTitle:title descr:desc thumImage:[UIImage imageNamed:@"AppIcon"]];
+
+            shareObject.webpageUrl = link;
+            shareObject.userName = name;
+            shareObject.path = path;
+            //分享消息对象设置分享内容对象
+            messageObject.shareObject = shareObject;
+
+            shareObject.hdImageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"LaunchImage" ofType:@"png"]];
+            shareObject.miniProgramType = UShareWXMiniProgramTypeRelease; // 可选体验版和开发板
+            
+            [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {
+                if (error) {
+                    reject(@-1, @"分享失败", error);
+                    UMSocialLogInfo(@"************Share fail with error %@*********",error);
+                } else {
+
+                    resolve(@"分享成功");
+                }
+            }];
+        
+        }];
+        
+    });
+    
+}
+
 RCT_REMAP_METHOD(shareWithPlatformType,
                  PlatformType: (int) platformType
                  Title: (NSString *) title
