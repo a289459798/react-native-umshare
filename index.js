@@ -62,7 +62,7 @@ class UMShare extends NativeEventEmitter {
      * @param path
      * @param link
      */
-    share(name, title, desc, path, link) {
+    shareMiniProgram(name, title, desc, path, link) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.shareMiniProgram(name, title, desc, path, link)
