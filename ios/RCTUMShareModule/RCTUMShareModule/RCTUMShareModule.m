@@ -184,7 +184,7 @@ RCT_REMAP_METHOD(shareMiniProgram,
             messageObject.shareObject = shareObject;
 
             shareObject.hdImageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"LaunchImage" ofType:@"png"]];
-            shareObject.miniProgramType = UShareWXMiniProgramTypeRelease; // 可选体验版和开发板
+            shareObject.miniProgramType = UShareWXMiniProgramTypeTest; // 可选体验版和开发板
             
             [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {
                 if (error) {
