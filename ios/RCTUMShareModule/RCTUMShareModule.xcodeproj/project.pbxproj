@@ -12,6 +12,9 @@
 		2B9667AB2085C2280036E8C6 /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9667AA2085C2280036E8C6 /* UShareUI.framework */; };
 		2B9667C52085CFD80036E8C6 /* UMShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9667C42085CFD70036E8C6 /* UMShare.framework */; };
 		2B9667C72085D0410036E8C6 /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9667C62085D0410036E8C6 /* UMCommon.framework */; };
+		2B9667D62085D19C0036E8C6 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9667B42085C2600036E8C6 /* libSocialQQ.a */; };
+		2B9667D72085D1A00036E8C6 /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9667AD2085C2600036E8C6 /* libSocialSina.a */; };
+		2B9667D82085D1A30036E8C6 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9667B02085C2600036E8C6 /* libSocialWeChat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,8 +61,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B9667C72085D0410036E8C6 /* UMCommon.framework in Frameworks */,
+				2B9667D62085D19C0036E8C6 /* libSocialQQ.a in Frameworks */,
 				2B9667C52085CFD80036E8C6 /* UMShare.framework in Frameworks */,
+				2B9667D82085D1A30036E8C6 /* libSocialWeChat.a in Frameworks */,
 				2B9667AB2085C2280036E8C6 /* UShareUI.framework in Frameworks */,
+				2B9667D72085D1A00036E8C6 /* libSocialSina.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
