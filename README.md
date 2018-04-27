@@ -1,6 +1,6 @@
 # 集成友盟分享与第三方登录
 
-分享功能：微信、QQ、新浪微博
+分享功能：微信（支持小程序）、QQ、新浪微博
 登录功能：微信、QQ
 
 ### 作者
@@ -11,8 +11,8 @@ QQ群: 161263093
 
 ### 友盟SDK版本
 
-Android：v6.4.0(精简版)
-IOS: v6.3.0
+Android：v6.9.1(精简版)
+IOS: v6.9.1
 
 ### 准备工作
 
@@ -38,23 +38,20 @@ react-native link
 
 ```xml
 <activity
-    android:name="com.umeng.qq.tencent.AuthActivity"
-    android:launchMode="singleTask"
-    android:noHistory="true" >
-
-    <intent-filter>
+        android:name="com.tencent.tauth.AuthActivity"
+        android:launchMode="singleTask"
+        android:noHistory="true" >
+        <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="tencent+您的QQ appkey" />
-    </intent-filter>
-</activity>
-
-<activity
-    android:name="com.umeng.qq.tencent.AssistActivity"
-    android:screenOrientation="portrait"
-    android:theme="@android:style/Theme.Translucent.NoTitleBar"
-    android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <data android:scheme="tencent+您QQ appid" />
+        </intent-filter>
+        </activity>
+        <activity
+        android:name="com.tencent.connect.common.AssistActivity"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:configChanges="orientation|keyboardHidden|screenSize"/>
 ```
 
 2. 微信
@@ -73,9 +70,27 @@ react-native link
 
 ```xml
 <activity
-	android:name="com.umeng.socialize.editorpage.ShareActivity"
-            android:theme="@style/Theme.UMDefault"
-            android:excludeFromRecents="true"/>
+        android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+        android:configChanges="keyboardHidden|orientation"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:exported="false"
+        android:screenOrientation="portrait" >
+    </activity>
+    <activity android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+              android:configChanges="keyboardHidden|orientation"
+              android:exported="false"
+              android:windowSoftInputMode="adjustResize"
+    >
+    </activity>
+    <activity
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+        android:launchMode="singleTask"
+        android:name="com.sina.weibo.sdk.share.WbShareTransActivity">
+        <intent-filter>
+            <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
 ```
 
 android 需要编译出来的apk文件的签名和申请微信和QQ时填写的一致，开发过程中可以在build.gradle 文件加入以下代码
@@ -223,7 +238,7 @@ UMShare.initShare("友盟appkey",
 	{
         "1_weixin": {
             appKey: "",
-            appSecret: "",
+            appSecret: "",	// 分享微信小程序必填
             redirectURL: "",
         },
         "2_qq": {
@@ -290,6 +305,18 @@ initShare(appkey: string, sharePlatforms: Object, debug: boolean);
  * @param link
  */
 share(title, desc, thumb, link);
+
+/**
+ * 友盟默认UI分享小程序
+ * @param name   微信小程序的id，gc_xxxxx
+ * @param title
+ * @param desc
+ * @param path	小程序页面路径 /page/xxx
+ * @param thumb
+ * @param link  当微信不支持小程序时跳转的h5页面地址
+ * @oaram mode	小程序的模式（开发、体验、正式）仅对ios游泳
+ */
+share(name, title, desc, path, thumb, link, mode);
 
 /**
  * 自定义UI, 微信分享

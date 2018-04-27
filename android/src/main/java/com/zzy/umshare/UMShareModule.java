@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.facebook.react.bridge.*;
+import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.*;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMMin;
 import com.umeng.socialize.media.UMWeb;
 import com.umeng.socialize.shareboard.SnsPlatform;
 import com.umeng.socialize.utils.ShareBoardlistener;
@@ -69,6 +71,92 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
                             }
                         })
                         .share();
+                }
+            }).open();
+    }
+
+    @ReactMethod
+    public void shareMiniProgram(final String name, final String title, final String desc, final String path, final String thumb, final String link, final int mode, final Promise promise) {
+
+
+        ArrayList<SHARE_MEDIA> displayList = new ArrayList<>();
+
+        displayList.add(SHARE_MEDIA.WEIXIN);
+        displayList.add(SHARE_MEDIA.WEIXIN_CIRCLE);
+
+
+        new ShareAction(getCurrentActivity()).setDisplayList(
+            (SHARE_MEDIA[]) displayList.toArray(new SHARE_MEDIA[displayList.size()]))
+            .setShareboardclickCallback(new ShareBoardlistener() {
+                @Override
+                public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
+
+                    UMImage image = new UMImage(getCurrentActivity(), thumb);
+
+
+                    if (share_media == SHARE_MEDIA.WEIXIN) {
+
+                        UMMin mediaObject = new UMMin(link);
+                        mediaObject.setThumb(image);
+                        mediaObject.setTitle(title);
+                        mediaObject.setDescription(desc);
+                        mediaObject.setPath(path);
+                        mediaObject.setUserName(name);
+                        new ShareAction(getCurrentActivity()).withMedia(mediaObject)
+                            .setPlatform(share_media)
+                            .setCallback(new UMShareListener() {
+                                @Override
+                                public void onStart(SHARE_MEDIA share_media) {
+
+                                }
+
+                                @Override
+                                public void onResult(SHARE_MEDIA share_media) {
+                                    promise.resolve("分享成功");
+                                }
+
+                                @Override
+                                public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                                    promise.reject(throwable);
+                                }
+
+                                @Override
+                                public void onCancel(SHARE_MEDIA share_media) {
+                                }
+                            })
+                            .share();
+                    } else {
+
+                        UMWeb web = new UMWeb(link);
+                        web.setTitle(title);//标题
+                        web.setThumb(image);  //缩略图
+                        web.setDescription(desc);//描述
+                        new ShareAction(getCurrentActivity()).withMedia(web)
+                            .setPlatform(share_media)
+                            .setCallback(new UMShareListener() {
+                                @Override
+                                public void onStart(SHARE_MEDIA share_media) {
+
+                                }
+
+                                @Override
+                                public void onResult(SHARE_MEDIA share_media) {
+                                    promise.resolve("分享成功");
+                                }
+
+                                @Override
+                                public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                                    promise.reject(throwable);
+                                }
+
+                                @Override
+                                public void onCancel(SHARE_MEDIA share_media) {
+                                }
+                            })
+                            .share();
+                    }
+
+
                 }
             }).open();
     }
@@ -227,7 +315,9 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
     @ReactMethod
     public void initShare(String appkey, ReadableMap sharePlatforms, boolean debug) {
-        UMShareAPI.init(mContext, appkey);
+
+        UMConfigure.init(mContext, appkey
+            , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
 
         UMShareConfig config = new UMShareConfig();
         config.isOpenShareEditActivity(true);
@@ -250,9 +340,14 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
             i++;
         }
 
-        Arrays.sort(keys);
+        if (i == 3) {
+            Arrays.sort(keys);
+        }
         mDisplayList = new ArrayList<SHARE_MEDIA>();
         for (i = 0; i < keys.length; i++) {
+            if (keys[i] == null) {
+                continue;
+            }
             if (keys[i].endsWith("weixin")) {
                 mDisplayList.add(SHARE_MEDIA.WEIXIN);
                 mDisplayList.add(SHARE_MEDIA.WEIXIN_CIRCLE);
@@ -263,7 +358,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
             }
         }
 
-        Config.DEBUG = debug;
+        UMConfigure.setLogEnabled(debug);
         UMShareAPI.get(mContext);
     }
 
