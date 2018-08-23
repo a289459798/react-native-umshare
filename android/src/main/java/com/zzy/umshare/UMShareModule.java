@@ -76,7 +76,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
-    public void shareMiniProgram(final String name, final String title, final String desc, final String path, final String thumb, final String link, final int mode, final Promise promise) {
+    public void shareMiniProgramWithPanel(final String name, final String title, final String desc, final String path, final String thumb, final String link, final int type, final int mode, final Promise promise) {
 
 
         ArrayList<SHARE_MEDIA> displayList = new ArrayList<>();
@@ -159,6 +159,43 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
                 }
             }).open();
+    }
+
+    @ReactMethod
+    public void shareMiniProgram(final String name, final String title, final String desc, final String path, final String thumb, final String link, final int mode, final Promise promise) {
+
+        UMImage image = new UMImage(getCurrentActivity(), thumb);
+
+        UMMin mediaObject = new UMMin(link);
+        mediaObject.setThumb(image);
+        mediaObject.setTitle(title);
+        mediaObject.setDescription(desc);
+        mediaObject.setPath(path);
+        mediaObject.setUserName(name);
+        new ShareAction(getCurrentActivity()).withMedia(mediaObject)
+            .setPlatform(SHARE_MEDIA.WEIXIN)
+            .setCallback(new UMShareListener() {
+                @Override
+                public void onStart(SHARE_MEDIA share_media) {
+
+                }
+
+                @Override
+                public void onResult(SHARE_MEDIA share_media) {
+                    promise.resolve("分享成功");
+                }
+
+                @Override
+                public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                    promise.reject(throwable);
+                }
+
+                @Override
+                public void onCancel(SHARE_MEDIA share_media) {
+                }
+            })
+            .share();
+
     }
 
     @ReactMethod

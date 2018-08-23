@@ -147,6 +147,7 @@ RCT_REMAP_METHOD(shareMiniProgram,
                  Path:(NSString *) path
                  Source:(NSString *) image
                  Link:(NSString *) link
+                 Type:(NSUInteger) type
                  Mode:(NSUInteger) mode
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject)
@@ -190,14 +191,22 @@ RCT_REMAP_METHOD(shareMiniProgram,
                 shareObject.hdImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:image]];
                 shareObject.miniProgramType = mode; // 可选体验版和开发板
             } else {
-                //创建网页内容对象
-                NSString* thumbURL = image;
-                UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:desc thumImage:thumbURL];
-                
-                //设置网页地址
-                shareObject.webpageUrl = link;
-                //分享消息对象设置分享内容对象
-                messageObject.shareObject = shareObject;
+                if(type == 1) {
+                    //创建图片内容对象
+                    UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
+                    [shareObject setShareImage:image];
+                    //分享消息对象设置分享内容对象
+                    messageObject.shareObject = shareObject;
+                } else {
+                    //创建网页内容对象
+                    NSString* thumbURL = image;
+                    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:desc thumImage:thumbURL];
+
+                    //设置网页地址
+                    shareObject.webpageUrl = link;
+                    //分享消息对象设置分享内容对象
+                    messageObject.shareObject = shareObject;
+                }
             }
             [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {
                 if (error) {
