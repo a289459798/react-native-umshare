@@ -197,7 +197,7 @@ signingConfigs {
 6. 修改 `AppDelegate.m`
 
     ```oc
-    #import <UMSocialCore/UMSocialCore.h>
+    #import <UMShare/UMShare.h>
     
     ...
     

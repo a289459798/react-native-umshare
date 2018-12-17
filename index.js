@@ -205,7 +205,7 @@ class UMShare extends NativeEventEmitter {
     shareSMS(title, desc, thumb, link) {
 
         return new Promise(function (callback, errorCallback) {
-            UMShareModule.shareWithPlatformType(6, title, desc, thumb, link)
+            UMShareModule.shareWithPlatformType(13, title, desc, thumb, link)
                 .then((data) => {
                     callback(data);
                 }, (error) => {
@@ -225,7 +225,7 @@ class UMShare extends NativeEventEmitter {
     shareEmail(title, desc, thumb, link) {
 
         return new Promise(function (callback, errorCallback) {
-            UMShareModule.shareWithPlatformType(7, title, desc, thumb, link)
+            UMShareModule.shareWithPlatformType(14, title, desc, thumb, link)
                 .then((data) => {
                     callback(data);
                 }, (error) => {
@@ -245,7 +245,7 @@ class UMShare extends NativeEventEmitter {
     shareFacebook(title, desc, thumb, link) {
 
         return new Promise(function (callback, errorCallback) {
-            UMShareModule.shareWithPlatformType(8, title, desc, thumb, link)
+            UMShareModule.shareWithPlatformType(18, title, desc, thumb, link)
                 .then((data) => {
                     callback(data);
                 }, (error) => {
@@ -265,7 +265,7 @@ class UMShare extends NativeEventEmitter {
     shareWhatsapp(title, desc, thumb, link) {
 
         return new Promise(function (callback, errorCallback) {
-            UMShareModule.shareWithPlatformType(9, title, desc, thumb, link)
+            UMShareModule.shareWithPlatformType(26, title, desc, thumb, link)
                 .then((data) => {
                     callback(data);
                 }, (error) => {

@@ -15,6 +15,15 @@
 		2B9667D62085D19C0036E8C6 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9667B42085C2600036E8C6 /* libSocialQQ.a */; };
 		2B9667D72085D1A00036E8C6 /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9667AD2085C2600036E8C6 /* libSocialSina.a */; };
 		2B9667D82085D1A30036E8C6 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9667B02085C2600036E8C6 /* libSocialWeChat.a */; };
+		2BF331A421C78A5E0065D33D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF331A321C78A5E0065D33D /* Bolts.framework */; };
+		2BF331B721C78A720065D33D /* libSocialSMS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF331A621C78A6E0065D33D /* libSocialSMS.a */; };
+		2BF331B821C78A720065D33D /* libSocialEmail.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF331A921C78A6E0065D33D /* libSocialEmail.a */; };
+		2BF331B921C78A720065D33D /* libSocialWhatsApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF331AD21C78A6E0065D33D /* libSocialWhatsApp.a */; };
+		2BF331BA21C78A720065D33D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF331AF21C78A720065D33D /* FBSDKLoginKit.framework */; };
+		2BF331BB21C78A720065D33D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF331B021C78A720065D33D /* FBSDKShareKit.framework */; };
+		2BF331BC21C78A720065D33D /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF331B121C78A720065D33D /* FBSDKMessengerShareKit.framework */; };
+		2BF331BD21C78A720065D33D /* libSocialFacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF331B321C78A720065D33D /* libSocialFacebook.a */; };
+		2BF331BE21C78A720065D33D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF331B421C78A720065D33D /* FBSDKCoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +62,20 @@
 		2B9667B42085C2600036E8C6 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
 		2B9667C42085CFD70036E8C6 /* UMShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMShare.framework; sourceTree = "<group>"; };
 		2B9667C62085D0410036E8C6 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
+		2BF331A321C78A5E0065D33D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		2BF331A621C78A6E0065D33D /* libSocialSMS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSMS.a; sourceTree = "<group>"; };
+		2BF331A721C78A6E0065D33D /* UMSocialSmsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSmsHandler.h; sourceTree = "<group>"; };
+		2BF331A921C78A6E0065D33D /* libSocialEmail.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialEmail.a; sourceTree = "<group>"; };
+		2BF331AA21C78A6E0065D33D /* UMSocialEmailHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialEmailHandler.h; sourceTree = "<group>"; };
+		2BF331AC21C78A6E0065D33D /* UMSocialWhatsappHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWhatsappHandler.h; sourceTree = "<group>"; };
+		2BF331AD21C78A6E0065D33D /* libSocialWhatsApp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWhatsApp.a; sourceTree = "<group>"; };
+		2BF331AF21C78A720065D33D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		2BF331B021C78A720065D33D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		2BF331B121C78A720065D33D /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
+		2BF331B221C78A720065D33D /* UMSocialFaceBookHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialFaceBookHandler.h; sourceTree = "<group>"; };
+		2BF331B321C78A720065D33D /* libSocialFacebook.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialFacebook.a; sourceTree = "<group>"; };
+		2BF331B421C78A720065D33D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		2BF331B621C78A720065D33D /* facebook_ios_sdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebook_ios_sdk_Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +85,19 @@
 			files = (
 				2B9667C72085D0410036E8C6 /* UMCommon.framework in Frameworks */,
 				2B9667D62085D19C0036E8C6 /* libSocialQQ.a in Frameworks */,
+				2BF331B921C78A720065D33D /* libSocialWhatsApp.a in Frameworks */,
+				2BF331B721C78A720065D33D /* libSocialSMS.a in Frameworks */,
 				2B9667C52085CFD80036E8C6 /* UMShare.framework in Frameworks */,
 				2B9667D82085D1A30036E8C6 /* libSocialWeChat.a in Frameworks */,
+				2BF331BD21C78A720065D33D /* libSocialFacebook.a in Frameworks */,
+				2BF331BC21C78A720065D33D /* FBSDKMessengerShareKit.framework in Frameworks */,
 				2B9667AB2085C2280036E8C6 /* UShareUI.framework in Frameworks */,
 				2B9667D72085D1A00036E8C6 /* libSocialSina.a in Frameworks */,
+				2BF331BE21C78A720065D33D /* FBSDKCoreKit.framework in Frameworks */,
+				2BF331BB21C78A720065D33D /* FBSDKShareKit.framework in Frameworks */,
+				2BF331BA21C78A720065D33D /* FBSDKLoginKit.framework in Frameworks */,
+				2BF331A421C78A5E0065D33D /* Bolts.framework in Frameworks */,
+				2BF331B821C78A720065D33D /* libSocialEmail.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +158,11 @@
 		2B6D3FC11E77994500C3018F /* SocialFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BF331B421C78A720065D33D /* FBSDKCoreKit.framework */,
+				2BF331B121C78A720065D33D /* FBSDKMessengerShareKit.framework */,
+				2BF331B021C78A720065D33D /* FBSDKShareKit.framework */,
+				2BF331AF21C78A720065D33D /* FBSDKLoginKit.framework */,
+				2BF331A321C78A5E0065D33D /* Bolts.framework */,
 				2B9667C62085D0410036E8C6 /* UMCommon.framework */,
 				2B9667C42085CFD70036E8C6 /* UMShare.framework */,
 				2B9667AA2085C2280036E8C6 /* UShareUI.framework */,
@@ -136,6 +173,10 @@
 		2B6D3FC61E77994500C3018F /* SocialLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				2BF331A821C78A6E0065D33D /* Email */,
+				2BF331AE21C78A720065D33D /* Facebook */,
+				2BF331A521C78A6E0065D33D /* SMS */,
+				2BF331AB21C78A6E0065D33D /* WhatsApp */,
 				2B9667B22085C2600036E8C6 /* QQ */,
 				2B9667AC2085C2600036E8C6 /* Sina */,
 				2B9667AF2085C2600036E8C6 /* WeChat */,
@@ -177,6 +218,43 @@
 				2B9667B42085C2600036E8C6 /* libSocialQQ.a */,
 			);
 			path = QQ;
+			sourceTree = "<group>";
+		};
+		2BF331A521C78A6E0065D33D /* SMS */ = {
+			isa = PBXGroup;
+			children = (
+				2BF331A621C78A6E0065D33D /* libSocialSMS.a */,
+				2BF331A721C78A6E0065D33D /* UMSocialSmsHandler.h */,
+			);
+			path = SMS;
+			sourceTree = "<group>";
+		};
+		2BF331A821C78A6E0065D33D /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				2BF331A921C78A6E0065D33D /* libSocialEmail.a */,
+				2BF331AA21C78A6E0065D33D /* UMSocialEmailHandler.h */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		2BF331AB21C78A6E0065D33D /* WhatsApp */ = {
+			isa = PBXGroup;
+			children = (
+				2BF331AC21C78A6E0065D33D /* UMSocialWhatsappHandler.h */,
+				2BF331AD21C78A6E0065D33D /* libSocialWhatsApp.a */,
+			);
+			path = WhatsApp;
+			sourceTree = "<group>";
+		};
+		2BF331AE21C78A720065D33D /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				2BF331B221C78A720065D33D /* UMSocialFaceBookHandler.h */,
+				2BF331B321C78A720065D33D /* libSocialFacebook.a */,
+				2BF331B621C78A720065D33D /* facebook_ios_sdk_Prefix.pch */,
+			);
+			path = Facebook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +421,7 @@
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialFrameworks",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Facebook",
 				);
 				HEADER_SEARCH_PATHS = "";
 				LIBRARY_SEARCH_PATHS = (
@@ -351,6 +430,10 @@
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Sina",
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/SMS",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Email",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/WhatsApp",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Facebook",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -369,6 +452,7 @@
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialFrameworks",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Facebook",
 				);
 				HEADER_SEARCH_PATHS = "";
 				LIBRARY_SEARCH_PATHS = (
@@ -377,6 +461,10 @@
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Sina",
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/SMS",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Email",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/WhatsApp",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Facebook",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
