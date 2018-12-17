@@ -196,6 +196,86 @@ class UMShare extends NativeEventEmitter {
     }
 
     /**
+     * 短信
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    shareSMS(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareWithPlatformType(6, title, desc, thumb, link)
+                .then((data) => {
+                    callback(data);
+                }, (error) => {
+                    errorCallback(error);
+                });
+        });
+
+    }
+
+    /**
+     * EMAIL
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    shareEmail(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareWithPlatformType(7, title, desc, thumb, link)
+                .then((data) => {
+                    callback(data);
+                }, (error) => {
+                    errorCallback(error);
+                });
+        });
+
+    }
+
+    /**
+     * facebook
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    shareFacebook(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareWithPlatformType(8, title, desc, thumb, link)
+                .then((data) => {
+                    callback(data);
+                }, (error) => {
+                    errorCallback(error);
+                });
+        });
+
+    }
+
+    /**
+     * whatsapp
+     * @param title
+     * @param desc
+     * @param thumb
+     * @param link
+     */
+    shareWhatsapp(title, desc, thumb, link) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareWithPlatformType(9, title, desc, thumb, link)
+                .then((data) => {
+                    callback(data);
+                }, (error) => {
+                    errorCallback(error);
+                });
+        });
+
+    }
+
+    /**
      * 微信登录
      * @returns {Promise}
      */

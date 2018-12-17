@@ -93,6 +93,19 @@ react-native link
     </activity>
 ```
 
+4. facebook
+
+```xml
+<activity
+            android:name="com.umeng.facebook.FacebookActivity"/>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+            
+            //appid一定要存在string文件中，并以facebook_app_id名字进行保存。
+```
+
 android 需要编译出来的apk文件的签名和申请微信和QQ时填写的一致，开发过程中可以在build.gradle 文件加入以下代码
 
 ```
