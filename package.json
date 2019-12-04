@@ -1,15 +1,39 @@
 {
-  "name": "react-native-umshare",
-  "version": "2.0.0",
+  "_from": "react-native-umshare",
+  "_id": "react-native-umshare@3.0.0-bate2",
+  "_inBundle": false,
+  "_integrity": "sha512-Rk1yUa2A3Y7RbCGMRjAZ+Z5B4VdrzJpaytEJWoQE1hLp5pLoyAVOePLzNfxc52X3HTEYthHCxKJ/RSErhTnt2g==",
+  "_location": "/react-native-umshare",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-native-umshare",
+    "name": "react-native-umshare",
+    "escapedName": "react-native-umshare",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-umshare/-/react-native-umshare-3.0.0-bate2.tgz",
+  "_shasum": "ccabd5ec702b7c5bed5b339c6efbaca529c90e28",
+  "_spec": "react-native-umshare",
+  "_where": "/Users/zhangzy/workspace/android/5ichong/academy",
+  "author": {
+    "name": "zhangzy"
+  },
+  "bugs": {
+    "url": "https://github.com/a289459798/react-native-umshare/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "deprecations": "",
   "description": "友盟分享和第三方登录",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/a289459798/react-native-umshare.git"
-  },
+  "homepage": "https://github.com/a289459798/react-native-umshare#readme",
   "keywords": [
     "react-native",
     "share",
@@ -17,10 +41,15 @@
     "qq",
     "sina"
   ],
-  "author": "zhangzy",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/a289459798/react-native-umshare/issues"
+  "main": "index.js",
+  "name": "react-native-umshare",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a289459798/react-native-umshare.git"
   },
-  "homepage": "https://github.com/a289459798/react-native-umshare#readme"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "3.0.0-bate3"
 }

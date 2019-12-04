@@ -1,0 +1,325 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B1277591E75233F00006937 /* RCTUMShareModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1277581E75233F00006937 /* RCTUMShareModule.m */; };
+		2B12775A1E75233F00006937 /* RCTUMShareModule.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 2B1277571E75233F00006937 /* RCTUMShareModule.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2B1277521E75233F00006937 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				2B12775A1E75233F00006937 /* RCTUMShareModule.h in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2B1277541E75233F00006937 /* libRCTUMShareModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTUMShareModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B1277571E75233F00006937 /* RCTUMShareModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTUMShareModule.h; sourceTree = "<group>"; };
+		2B1277581E75233F00006937 /* RCTUMShareModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTUMShareModule.m; sourceTree = "<group>"; };
+		2B31DFA01E75A61F006DE3FB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		2B31DFA21E75A639006DE3FB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2B31DFA41E75A64B006DE3FB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2B31DFA61E75A65F006DE3FB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		2B31DFA81E75A66F006DE3FB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		2B31DFAA1E75A678006DE3FB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		2B6D3F6D1E7793E200C3018F /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocialQQ.a; path = RCTUMShareModule/UMSocial/SocialLibraries/QQ/libSocialQQ.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B1277511E75233F00006937 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B12774B1E75233F00006937 = {
+			isa = PBXGroup;
+			children = (
+				2B1277571E75233F00006937 /* RCTUMShareModule.h */,
+				2B1277581E75233F00006937 /* RCTUMShareModule.m */,
+				2B1277551E75233F00006937 /* Products */,
+				2B1279DC1E75928C00006937 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2B1277551E75233F00006937 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B1277541E75233F00006937 /* libRCTUMShareModule.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2B1279DC1E75928C00006937 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B6D3F6D1E7793E200C3018F /* libSocialQQ.a */,
+				2B31DFAA1E75A678006DE3FB /* libz.tbd */,
+				2B31DFA81E75A66F006DE3FB /* libc++.tbd */,
+				2B31DFA61E75A65F006DE3FB /* CoreTelephony.framework */,
+				2B31DFA41E75A64B006DE3FB /* SystemConfiguration.framework */,
+				2B31DFA21E75A639006DE3FB /* CoreGraphics.framework */,
+				2B31DFA01E75A61F006DE3FB /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2B1277531E75233F00006937 /* RCTUMShareModule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B12775D1E75233F00006937 /* Build configuration list for PBXNativeTarget "RCTUMShareModule" */;
+			buildPhases = (
+				2B1277501E75233F00006937 /* Sources */,
+				2B1277511E75233F00006937 /* Frameworks */,
+				2B1277521E75233F00006937 /* Copy Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RCTUMShareModule;
+			productName = RCTUMShareModule;
+			productReference = 2B1277541E75233F00006937 /* libRCTUMShareModule.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2B12774C1E75233F00006937 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = zzy;
+				TargetAttributes = {
+					2B1277531E75233F00006937 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 33KGZ49A6U;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2B12774F1E75233F00006937 /* Build configuration list for PBXProject "RCTUMShareModule" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 2B12774B1E75233F00006937;
+			productRefGroup = 2B1277551E75233F00006937 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2B1277531E75233F00006937 /* RCTUMShareModule */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2B1277501E75233F00006937 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B1277591E75233F00006937 /* RCTUMShareModule.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2B12775B1E75233F00006937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2B12775C1E75233F00006937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2B12775E1E75233F00006937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 33KGZ49A6U;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/RCTUMShareModule/UMSocial/**",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialFrameworks",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Facebook",
+				);
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/SMS",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Email",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/WhatsApp",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Facebook",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2B12775F1E75233F00006937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 33KGZ49A6U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/RCTUMShareModule/UMSocial/**",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialFrameworks",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Facebook",
+				);
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/SMS",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Email",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/WhatsApp",
+					"$(PROJECT_DIR)/RCTUMShareModule/UMSocial/SocialLibraries/Facebook",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B12774F1E75233F00006937 /* Build configuration list for PBXProject "RCTUMShareModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B12775B1E75233F00006937 /* Debug */,
+				2B12775C1E75233F00006937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B12775D1E75233F00006937 /* Build configuration list for PBXNativeTarget "RCTUMShareModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B12775E1E75233F00006937 /* Debug */,
+				2B12775F1E75233F00006937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2B12774C1E75233F00006937 /* Project object */;
+}

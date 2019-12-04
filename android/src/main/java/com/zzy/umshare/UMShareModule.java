@@ -363,11 +363,16 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
-    public void initShare(String appkey, ReadableMap sharePlatforms, boolean debug) {
+    public void init(String appkey, ReadableMap sharePlatforms, boolean debug) {
 
+        String channel = "umeng";
+        try {
+            channel = Helper.getValue(mContext, "UMENG_CHANNEL");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         UMConfigure.init(mContext, appkey
-            , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
-
+            , channel, UMConfigure.DEVICE_TYPE_PHONE, "");
         UMShareConfig config = new UMShareConfig();
         config.isOpenShareEditActivity(true);
         UMShareAPI.get(mContext).setShareConfig(config);

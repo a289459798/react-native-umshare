@@ -24,7 +24,7 @@ IOS: v6.9.1
 ### 安装
 
 ```
-npm install react-native-umshare --save
+npm install react-native-umshare@2.0.0 --save
 react-native link
 ```
 
