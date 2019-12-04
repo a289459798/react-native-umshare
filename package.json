@@ -1,27 +1,25 @@
 {
-  "_from": "react-native-umshare",
-  "_id": "react-native-umshare@3.0.0-bate2",
+  "_from": "git+https://github.com/a289459798/react-native-umshare.git",
+  "_id": "react-native-umshare@3.0.0-bate3",
   "_inBundle": false,
-  "_integrity": "sha512-Rk1yUa2A3Y7RbCGMRjAZ+Z5B4VdrzJpaytEJWoQE1hLp5pLoyAVOePLzNfxc52X3HTEYthHCxKJ/RSErhTnt2g==",
+  "_integrity": "",
   "_location": "/react-native-umshare",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "react-native-umshare",
-    "name": "react-native-umshare",
-    "escapedName": "react-native-umshare",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
+    "type": "git",
+    "raw": "git+https://github.com/a289459798/react-native-umshare.git",
+    "rawSpec": "git+https://github.com/a289459798/react-native-umshare.git",
+    "saveSpec": "git+https://github.com/a289459798/react-native-umshare.git",
+    "fetchSpec": "https://github.com/a289459798/react-native-umshare.git",
+    "gitCommittish": null
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/react-native-umshare/-/react-native-umshare-3.0.0-bate2.tgz",
+  "_resolved": "git+https://github.com/a289459798/react-native-umshare.git#5f0cb994855e7cb6143fe68057133cd7f70e5ac6",
   "_shasum": "ccabd5ec702b7c5bed5b339c6efbaca529c90e28",
-  "_spec": "react-native-umshare",
+  "_spec": "git+https://github.com/a289459798/react-native-umshare.git",
   "_where": "/Users/zhangzy/workspace/android/5ichong/academy",
   "author": {
     "name": "zhangzy"

@@ -29,9 +29,9 @@ class UMShare extends NativeEventEmitter {
      * @param sharePlatforms
      * @param debug
      */
-    initShare(appkey: string, sharePlatforms: Object, debug: boolean) {
+    init(appkey: string, sharePlatforms: Object, debug: boolean) {
 
-        UMShareModule.initShare(appkey, sharePlatforms, debug);
+        UMShareModule.init(appkey, sharePlatforms, debug);
     }
 
     /**

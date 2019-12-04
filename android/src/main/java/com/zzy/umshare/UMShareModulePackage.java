@@ -26,6 +26,7 @@ public class UMShareModulePackage implements ReactPackage {
         sReactContext = reactContext;
 
         modules.add(new UMShareModule(reactContext));
+        modules.add(new UMAnalyticsModule(reactContext));
 
         return modules;
     }

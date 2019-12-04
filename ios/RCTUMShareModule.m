@@ -354,7 +354,7 @@ RCT_REMAP_METHOD(shareWithPlatformType,
 }
 
 
-RCT_EXPORT_METHOD(initShare:(NSString *)umAppKey SharePlatforms:(NSDictionary *) sharePlatforms OpenLog:(BOOL)openLog)
+RCT_EXPORT_METHOD(init:(NSString *)umAppKey SharePlatforms:(NSDictionary *) sharePlatforms OpenLog:(BOOL)openLog)
 {
     
     dispatch_async(dispatch_get_main_queue(), ^{

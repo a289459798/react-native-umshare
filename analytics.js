@@ -16,6 +16,12 @@ var {
 
 class Analytics {
 
+
+    init(appkey, debug) {
+
+        UMAnalytics.init(appkey, debug)
+    }
+
     event(name) {
 
         UMAnalytics.event(name)

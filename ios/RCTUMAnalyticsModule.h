@@ -12,6 +12,7 @@
 #else // Compatibility for RN version < 0.40
 #import "RCTBridgeModule.h"
 #endif
+#import <UMCommon/UMCommon.h>
 
 #import <UMAnalytics/MobClick.h>
 

@@ -21,12 +21,12 @@ import java.util.*;
  */
 public class UMShareModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 
-    private Context mContext;
+    private Activity mContext;
     private ArrayList<SHARE_MEDIA> mDisplayList;
 
     public UMShareModule(ReactApplicationContext reactContext) {
         super(reactContext);
-        mContext = reactContext;
+        mContext = getCurrentActivity();
     }
 
     @Override
@@ -43,12 +43,12 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
                 @Override
                 public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
 
-                    UMImage image = new UMImage(getCurrentActivity(), thumb);
+                    UMImage image = new UMImage(mContext, thumb);
                     UMWeb web = new UMWeb(link);
                     web.setTitle(title);//标题
                     web.setThumb(image);  //缩略图
                     web.setDescription(desc);//描述
-                    new ShareAction(getCurrentActivity()).withMedia(web)
+                    new ShareAction(mContext).withMedia(web)
                         .setPlatform(share_media)
                         .setCallback(new UMShareListener() {
                             @Override
@@ -85,13 +85,13 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
         displayList.add(SHARE_MEDIA.WEIXIN_CIRCLE);
 
 
-        new ShareAction(getCurrentActivity()).setDisplayList(
+        new ShareAction(mContext).setDisplayList(
             (SHARE_MEDIA[]) displayList.toArray(new SHARE_MEDIA[displayList.size()]))
             .setShareboardclickCallback(new ShareBoardlistener() {
                 @Override
                 public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
 
-                    UMImage image = new UMImage(getCurrentActivity(), thumb);
+                    UMImage image = new UMImage(mContext, thumb);
 
 
                     if (share_media == SHARE_MEDIA.WEIXIN) {
@@ -102,7 +102,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
                         mediaObject.setDescription(desc);
                         mediaObject.setPath(path);
                         mediaObject.setUserName(name);
-                        new ShareAction(getCurrentActivity()).withMedia(mediaObject)
+                        new ShareAction(mContext).withMedia(mediaObject)
                             .setPlatform(share_media)
                             .setCallback(new UMShareListener() {
                                 @Override
@@ -131,7 +131,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
                         web.setTitle(title);//标题
                         web.setThumb(image);  //缩略图
                         web.setDescription(desc);//描述
-                        new ShareAction(getCurrentActivity()).withMedia(web)
+                        new ShareAction(mContext).withMedia(web)
                             .setPlatform(share_media)
                             .setCallback(new UMShareListener() {
                                 @Override
@@ -164,7 +164,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
     @ReactMethod
     public void shareMiniProgram(final String name, final String title, final String desc, final String path, final String thumb, final String link, final int mode, final Promise promise) {
 
-        UMImage image = new UMImage(getCurrentActivity(), thumb);
+        UMImage image = new UMImage(mContext, thumb);
 
         UMMin mediaObject = new UMMin(link);
         mediaObject.setThumb(image);
@@ -172,7 +172,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
         mediaObject.setDescription(desc);
         mediaObject.setPath(path);
         mediaObject.setUserName(name);
-        new ShareAction(getCurrentActivity()).withMedia(mediaObject)
+        new ShareAction(mContext).withMedia(mediaObject)
             .setPlatform(SHARE_MEDIA.WEIXIN)
             .setCallback(new UMShareListener() {
                 @Override
@@ -201,14 +201,14 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
     @ReactMethod
     public void shareImage(final String thumb, final Promise promise) {
 
-        new ShareAction(getCurrentActivity()).setDisplayList(
+        new ShareAction(mContext).setDisplayList(
             (SHARE_MEDIA[]) mDisplayList.toArray(new SHARE_MEDIA[mDisplayList.size()]))
             .setShareboardclickCallback(new ShareBoardlistener() {
                 @Override
                 public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
 
-                    UMImage image = new UMImage(getCurrentActivity(), thumb);
-                    new ShareAction(getCurrentActivity()).withMedia(image)
+                    UMImage image = new UMImage(mContext, thumb);
+                    new ShareAction(mContext).withMedia(image)
                         .setPlatform(share_media)
                         .setCallback(new UMShareListener() {
                             @Override
@@ -280,7 +280,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
     public void shareWithText(SHARE_MEDIA platform, String desc, final Promise promise) {
 
-        new ShareAction(getCurrentActivity()).setPlatform(platform)
+        new ShareAction(mContext).setPlatform(platform)
             .withText(desc)
             .setCallback(new UMShareListener() {
                 @Override
@@ -306,12 +306,12 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
     public void shareWithLink(SHARE_MEDIA platform, String title, String desc, String thumb, String link, final Promise promise) {
 
-        UMImage image = new UMImage(getCurrentActivity(), thumb);
+        UMImage image = new UMImage(mContext, thumb);
         UMWeb web = new UMWeb(link);
         web.setTitle(title);//标题
         web.setThumb(image);  //缩略图
         web.setDescription(desc);//描述
-        new ShareAction(getCurrentActivity()).setPlatform(platform)
+        new ShareAction(mContext).setPlatform(platform)
             .withMedia(web)
             .setCallback(new UMShareListener() {
                 @Override
@@ -337,8 +337,8 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
     public void shareWithImage(SHARE_MEDIA platform, String thumb, final Promise promise) {
 
-        UMImage image = new UMImage(getCurrentActivity(), thumb);
-        new ShareAction(getCurrentActivity()).setPlatform(platform)
+        UMImage image = new UMImage(mContext, thumb);
+        new ShareAction(mContext).setPlatform(platform)
             .withMedia(image)
             .setCallback(new UMShareListener() {
                 @Override
@@ -423,7 +423,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
         if (platform.equals("weixin")) {
             share_media = SHARE_MEDIA.WEIXIN;
         }
-        UMShareAPI.get(getCurrentActivity()).getPlatformInfo(getCurrentActivity(), share_media, new UMAuthListener() {
+        UMShareAPI.get(mContext).getPlatformInfo(mContext, share_media, new UMAuthListener() {
             @Override
             public void onStart(SHARE_MEDIA share_media) {
 
@@ -460,7 +460,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
-        UMShareAPI.get(getCurrentActivity()).onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(mContext).onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

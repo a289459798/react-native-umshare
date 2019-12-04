@@ -5,7 +5,7 @@
 'use strict';
 
 import Share from './share';
-import Analytics from './share';
+import Analytics from './analytics';
 
 module.exports = {
     Share: Share,
