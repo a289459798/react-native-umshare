@@ -14,7 +14,7 @@ var {
     Platform,
     } = ReactNative;
 
-class Analytics {
+export default new class Analytics {
 
 
     init(appkey, debug) {
@@ -28,7 +28,6 @@ class Analytics {
     }
 
     pageBegin(name) {
-
         UMAnalytics.pageBegin(name)
     }
 
@@ -38,7 +37,3 @@ class Analytics {
     }
 
 }
-
-Analytics = new Analytics();
-
-module.exports = Analytics;
