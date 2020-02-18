@@ -264,8 +264,15 @@ RCT_REMAP_METHOD(shareWithPlatformType,
         
         UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
         
-        NSString* thumbURL = thumb;
-        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:desc thumImage:thumbURL];
+        UMShareWebpageObject *shareObject;
+        
+        if([thumb hasPrefix:@"http"]) {
+            shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:desc thumImage:thumb];
+        } else {
+            NSData *imageData = [[NSData alloc] initWithBase64EncodedString:thumb options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:desc thumImage:imageData];
+        }
+        
         shareObject.webpageUrl = link;
         
         messageObject.shareObject = shareObject;
@@ -334,7 +341,13 @@ RCT_REMAP_METHOD(shareWithPlatformType,
         UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
         //创建图片内容对象
         UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
-        [shareObject setShareImage:thumb];
+        
+        if([thumb hasPrefix:@"http"]) {
+            [shareObject setShareImage:thumb];
+        } else {
+            NSData *imageData = [[NSData alloc] initWithBase64EncodedString:thumb options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            [shareObject setShareImage:imageData];
+        }
         
         //分享消息对象设置分享内容对象
         messageObject.shareObject = shareObject;
