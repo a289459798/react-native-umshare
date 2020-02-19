@@ -258,9 +258,6 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
             case 14:
                 plat = SHARE_MEDIA.EMAIL;
                 break;
-            case 18:
-                plat = SHARE_MEDIA.FACEBOOK;
-                break;
             case 26:
                 plat = SHARE_MEDIA.WHATSAPP;
                 break;
