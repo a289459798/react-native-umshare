@@ -1,18 +1,15 @@
-# 集成友盟分享与第三方登录
+# 集成友盟统计、分享与第三方登录
 
 分享功能：微信（支持小程序）、QQ、新浪微博
 登录功能：微信、QQ
 
-### 作者
 
-QQ: 289459798
-QQ群: 161263093
-欢迎更多的喜欢开源的小伙伴加入
+为开源事业做一份绵薄之力，欢迎加入群：161263093
 
-### 友盟SDK版本
+作者：zhangzy  QQ：289459798  微信：zhangzy816
 
-Android：v6.9.1(精简版)
-IOS: v6.9.1
+react-native 版本 > 0.6
+
 
 ### 准备工作
 
@@ -21,12 +18,39 @@ IOS: v6.9.1
 3. QQ开放平台申请 [http://open.qq.com/](http://open.qq.com/)
 4. 新浪开放平台申请[http://open.weibo.com/](http://open.weibo.com/)
 
-### 安装
+## Getting started
 
-```
-npm install react-native-umshare@2.0.0 --save
-react-native link
-```
+`$ npm install git+https://github.com/a289459798/react-native-umshare.git --save`
+
+### Mostly automatic installation
+
+`$ react-native link react-native-umshare`
+
+### Manual installation
+
+
+#### iOS
+
+1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
+2. Go to `node_modules` ➜ `react-native-umshare` and add `RNSy.xcodeproj`
+3. In XCode, in the project navigator, select your project. Add `libRNSy.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+4. Run your project (`Cmd+R`)<
+
+#### Android
+
+1. Open up `android/app/src/main/java/[...]/MainActivity.java`
+  - Add `import com.ichong.zzy.umshare.RNSyPackage;` to the imports at the top of the file
+  - Add `new RNSharePackage()` to the list returned by the `getPackages()` method
+2. Append the following lines to `android/settings.gradle`:
+  	```
+  	include ':react-native-umshare'
+  	project(':react-native-umshare').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-umshare/android')
+  	```
+3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
+  	```
+      compile project(':react-native-umshare')
+  	```
+
 
 
 ### Android
@@ -93,18 +117,6 @@ react-native link
     </activity>
 ```
 
-4. facebook
-
-```xml
-<activity
-            android:name="com.umeng.facebook.FacebookActivity"/>
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-            
-            //appid一定要存在string文件中，并以facebook_app_id名字进行保存。
-```
 
 android 需要编译出来的apk文件的签名和申请微信和QQ时填写的一致，开发过程中可以在build.gradle 文件加入以下代码
 
@@ -243,37 +255,44 @@ signingConfigs {
 先初始化参数
 
 ```js
-import UMShare from 'react-native-umshare';
-...
+import {Share, Analytics} from 'react-native-umshare';
 
-// 第二个参数决定在分享界面的排序1_、2_、3_为前缀
-UMShare.initShare("友盟appkey", 
-	{
-        "1_weixin": {
-            appKey: "",
-            appSecret: "",	// 分享微信小程序必填
-            redirectURL: "",
-        },
-        "2_qq": {
-            appKey: "",
-            appSecret: "",
-            redirectURL: "",
-        },
-        "3_sina": {
-            appKey: "",
-            appSecret: "",
-            redirectURL: "",
-        },
-    },
-    false);
+// 初始化统计
+Analytics.init(Config.UM.Appkey, Config.DEBUG);
+
+// 初始化分享，第二个参数决定在分享界面的排序1_、2_、3_为前缀
+Share.init(Config.UM.Appkey, {
+                             '1_weixin': {
+                                 appKey: 'wxa40f9f472xxxxx',
+                                 appSecret: 'ec5967d279c414xxxxxxx',
+                                 redirectURL: '',
+                             },
+                             "2_qq": {
+                                 appKey: "",
+                                 appSecret: "",
+                                 redirectURL: "",
+                             },
+                         }, Config.DEBUG);
+
 ```
 
-调用分享
+调用分享（带面板）
 
 ```js
-import UMShare from 'react-native-umshare';
-...
-UMShare.share("标题", "简介", "缩略图地址", "链接地址")
+import {Share} from 'react-native-umshare';
+Share.share("标题", "简介", "缩略图地址", "链接地址")
+.then(() => {
+	// 成功
+}, (error) => {
+	// 失败
+})
+```
+
+调用分享（不带面板）
+
+```js
+import {Share} from 'react-native-umshare';
+Share.shareWX("标题", "简介", "缩略图地址", "链接地址")
 .then(() => {
 	// 成功
 }, (error) => {
@@ -283,14 +302,15 @@ UMShare.share("标题", "简介", "缩略图地址", "链接地址")
 
 调用登录
 ```js
-UMShare.loginQQ()
+import {Share} from 'react-native-umshare';
+Share.loginQQ()
     .then((data) => {
         console.log(data);
     }, (error) => {
         console.log(error)
     })
 
-UMShare.loginWX()
+Share.loginWX()
     .then((data) => {
         console.log(data);
     }, (error) => {
@@ -298,7 +318,40 @@ UMShare.loginWX()
     })
 ```
 
-### API
+统计
+```js
+import {Analytics} from 'react-native-umshare';
+Analytics.event("事件名称")
+```
+
+### 统计API
+
+```js
+
+/**
+* 初始化
+*/
+init(appkey, debug);
+
+/**
+* 统计点击事件
+*/
+event(name);
+
+/**
+* 统计页面打开
+*/
+pageBegin(name);
+
+/**
+* 统计页面关闭
+*/
+
+pageEnd(name);
+```
+
+
+### 分享与登录API
 
 ```js
 
@@ -308,7 +361,7 @@ UMShare.loginWX()
  * @param sharePlatforms
  * @param debug
  */
-initShare(appkey: string, sharePlatforms: Object, debug: boolean);
+init(appkey: string, sharePlatforms: Object, debug: boolean);
 
 /**
  * 友盟默认UI分享
@@ -375,6 +428,11 @@ shareQzone(title, desc, thumb, link);
  * @param link
  */
 shareSina(title, desc, thumb, link);
+
+/**
+* 分销到小程序
+*/
+shareMiniProgram(name, title, desc, path, image, link, type, mode);
 
 /**
  * 微信登录
