@@ -10,6 +10,11 @@
 
 react-native 版本 > 0.6
 
+## 效果
+
+![image](/pic/login.GIF)
+![image](/pic/share.GIF)
+
 
 ### 准备工作
 
