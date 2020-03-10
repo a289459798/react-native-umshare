@@ -236,14 +236,13 @@ class UMShare extends NativeEventEmitter {
             UMShareModule.login('weixin')
                 .then((data) => {
                     if(Platform.OS == "android") {
-                        let originalResponse = {};
-                        originalResponse.openid = res.openid;
-                        originalResponse.province = res.province;
-                        originalResponse.city = res.city;
-                        originalResponse.unionid = res.unionid;
-                        originalResponse.headimgurl = res.profile_image_url;
-                        originalResponse.nickname = res.screen_name;
-                        originalResponse.sex = res.gender == '男' ? 1 : res.gender == '女' ? 2 : 0;
+                        originalResponse.openid = data.openid;
+                        originalResponse.province = data.province;
+                        originalResponse.city = data.city;
+                        originalResponse.unionid = data.unionid;
+                        originalResponse.headimgurl = data.profile_image_url;
+                        originalResponse.nickname = data.screen_name;
+                        originalResponse.sex = data.gender == '男' ? 1 : data.gender == '女' ? 2 : 0;
                         data.originalResponse = originalResponse;
                     }
                     callback(data);
