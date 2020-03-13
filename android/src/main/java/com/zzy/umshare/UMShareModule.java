@@ -12,6 +12,7 @@ import com.umeng.socialize.media.UMMin;
 import com.umeng.socialize.media.UMWeb;
 import com.umeng.socialize.shareboard.SnsPlatform;
 import com.umeng.socialize.utils.ShareBoardlistener;
+import android.util.Base64;
 
 import java.util.*;
 
@@ -207,7 +208,13 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
                 @Override
                 public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
 
-                    UMImage image = new UMImage(mContext, thumb);
+                    UMImage image;
+                    if (thumb.startsWith("http")) {
+                        image = new UMImage(mContext, thumb);
+                    } else {
+                        image = new UMImage(mContext, Base64.decode(thumb, Base64.DEFAULT));
+                    }
+
                     new ShareAction(getCurrentActivity()).withMedia(image)
                         .setPlatform(share_media)
                         .setCallback(new UMShareListener() {
@@ -334,7 +341,12 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
 
     public void shareWithImage(SHARE_MEDIA platform, String thumb, final Promise promise) {
 
-        UMImage image = new UMImage(mContext, thumb);
+        UMImage image;
+        if (thumb.startsWith("http")) {
+            image = new UMImage(mContext, thumb);
+        } else {
+            image = new UMImage(mContext, Base64.decode(thumb, Base64.DEFAULT));
+        }
         new ShareAction(getCurrentActivity()).setPlatform(platform)
             .withMedia(image)
             .setCallback(new UMShareListener() {
