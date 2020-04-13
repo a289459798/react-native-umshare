@@ -111,15 +111,18 @@ RCT_REMAP_METHOD(shareImage,
         }];
         
         [UMSocialUIManager setPreDefinePlatforms:sort];
-        
-        
         [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
             
             //创建分享消息对象
             UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
             //创建图片内容对象
             UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
-            [shareObject setShareImage:thumb];
+            if([thumb hasPrefix:@"http"]) {
+                [shareObject setShareImage:thumb];
+            } else {
+                NSData *imageData = [[NSData alloc] initWithBase64EncodedString:thumb options:NSDataBase64DecodingIgnoreUnknownCharacters];
+                [shareObject setShareImage:imageData];
+            }
             
             //分享消息对象设置分享内容对象
             messageObject.shareObject = shareObject;
@@ -129,7 +132,6 @@ RCT_REMAP_METHOD(shareImage,
                     reject(@"-1", @"分享失败", error);
                     UMSocialLogInfo(@"************Share fail with error %@*********",error);
                 } else {
-                    
                     resolve(@"分享成功");
                 }
             }];
