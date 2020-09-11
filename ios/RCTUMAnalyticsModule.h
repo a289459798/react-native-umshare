@@ -14,7 +14,7 @@
 #endif
 #import <UMCommon/UMCommon.h>
 
-#import <UMAnalytics/MobClick.h>
+#import <UMCommon/MobClick.h>
 
 @interface RCTUMAnalyticsModule : NSObject <RCTBridgeModule>
 
