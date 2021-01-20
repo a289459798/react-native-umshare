@@ -69,10 +69,37 @@ class UMShare extends NativeEventEmitter {
      * @param type
      * @param mode
      */
-    shareMiniProgram(name, title, desc, path, image, link, type, mode) {
+    shareMiniProgramWithPanel(name, title, desc, path, image, link, type, mode) {
 
         return new Promise(function (callback, errorCallback) {
-            UMShareModule.shareMiniProgram(name, title, desc, path, image, link, type, mode)
+            UMShareModule.shareMiniProgramWithPanel(name, title, desc, path, image, link, type, mode)
+                .then((data) => {
+                    callback(data);
+                }, (error) => {
+                    if (typeof error == 'string') {
+                        errorCallback(error);
+                    } else {
+                        errorCallback(error.message);
+                    }
+                });
+        });
+
+    }
+
+    /**
+     *
+     * @param name
+     * @param title
+     * @param desc
+     * @param path
+     * @param image
+     * @param link
+     * @param mode
+     */
+    shareMiniProgram(name, title, desc, path, image, link, mode) {
+
+        return new Promise(function (callback, errorCallback) {
+            UMShareModule.shareMiniProgram(name, title, desc, path, image, link, mode)
                 .then((data) => {
                     callback(data);
                 }, (error) => {
