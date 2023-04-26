@@ -40,7 +40,7 @@
     "sina"
   ],
   "license": "ISC",
-  "main": "index.js",
+  "main": "index.ts",
   "name": "react-native-umshare",
   "repository": {
     "type": "git",
@@ -49,5 +49,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "3.0.4"
+  "version": "4.0.0"
 }

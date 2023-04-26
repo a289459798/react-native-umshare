@@ -467,6 +467,16 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
         });
     }
 
+    @ReactMethod
+    public void addListener(String eventName) {
+
+    }
+
+    @ReactMethod
+    public void removeListeners(Integer count) {
+
+    }
+
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
         UMShareAPI.get(mContext).onActivityResult(requestCode, resultCode, data);

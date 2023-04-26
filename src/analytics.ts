@@ -3,10 +3,6 @@
  */
 
 'use strict';
-import React, {
-    Component,
-} from 'react';
-
 var ReactNative = require('react-native');
 import { NativeModules } from 'react-native';
 var UMAnalytics = NativeModules.UMAnalyticsModule;
@@ -17,23 +13,20 @@ var {
 export default new class Analytics {
 
 
-    init(appkey, debug) {
-
+    init(appkey: string, debug: boolean) {
         UMAnalytics.init(appkey, debug)
     }
 
-    event(name) {
-
+    event(name: string) {
         UMAnalytics.event(name)
     }
 
-    pageBegin(name) {
+    pageBegin(name: string) {
         UMAnalytics.pageBegin(name)
     }
 
-    pageEnd(name) {
-
+    pageEnd(name: string) {
         UMAnalytics.pageEnd(name)
     }
 
-}
+}()

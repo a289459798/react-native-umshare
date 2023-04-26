@@ -16,11 +16,8 @@ const UMShareModule = NativeModules.UMShareModule;
 class UMShare extends NativeEventEmitter {
 
     // 构造
-    constructor(props) {
+    constructor() {
         super(UMShareModule);
-
-        // 初始状态
-        this.state = {};
     }
 
     /**
@@ -41,13 +38,13 @@ class UMShare extends NativeEventEmitter {
      * @param thumb
      * @param link
      */
-    share(title, desc, thumb, link) {
+    share(title: string, desc: string, thumb: string, link: string) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.share(title, desc, thumb, link)
-                .then((data) => {
+                .then((data: any) => {
                     callback(data);
-                }, (error) => {
+                }, (error: any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -69,13 +66,13 @@ class UMShare extends NativeEventEmitter {
      * @param type
      * @param mode
      */
-    shareMiniProgramWithPanel(name, title, desc, path, image, link, type, mode) {
+    shareMiniProgramWithPanel(name: string, title: string, desc: string, path: string, image: string, link: string, type: string, mode: string) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.shareMiniProgramWithPanel(name, title, desc, path, image, link, type, mode)
-                .then((data) => {
+                .then((data: any) => {
                     callback(data);
-                }, (error) => {
+                }, (error: any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -96,13 +93,13 @@ class UMShare extends NativeEventEmitter {
      * @param link
      * @param mode
      */
-    shareMiniProgram(name, title, desc, path, image, link, mode) {
+    shareMiniProgram(name: string, title: string, desc: string, path: string, image: string, link: string, mode: string) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.shareMiniProgram(name, title, desc, path, image, link, mode)
-                .then((data) => {
+                .then((data: any) => {
                     callback(data);
-                }, (error) => {
+                }, (error: any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -117,13 +114,13 @@ class UMShare extends NativeEventEmitter {
      *
      * @param thumb
      */
-    shareImage(thumb) {
+    shareImage(thumb: string) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.shareImage(thumb)
-                .then((data) => {
+                .then((data: any) => {
                     callback(data);
-                }, (error) => {
+                }, (error: any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -141,13 +138,13 @@ class UMShare extends NativeEventEmitter {
      * @param thumb
      * @param link
      */
-    shareWX(title, desc, thumb, link) {
+    shareWX(title: string, desc: string, thumb: string, link: string) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.shareWithPlatformType(1, title, desc, thumb, link)
-                .then((data) => {
+                .then((data: any) => {
                     callback(data);
-                }, (error) => {
+                }, (error: any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -165,13 +162,13 @@ class UMShare extends NativeEventEmitter {
      * @param thumb
      * @param link
      */
-    shareWXTimeLine(title, desc, thumb, link) {
+    shareWXTimeLine(title: string, desc: string, thumb: string, link: string) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.shareWithPlatformType(2, title, desc, thumb, link)
-                .then((data) => {
+                .then((data:any) => {
                     callback(data);
-                }, (error) => {
+                }, (error:any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -189,13 +186,13 @@ class UMShare extends NativeEventEmitter {
      * @param thumb
      * @param link
      */
-    shareQQ(title, desc, thumb, link) {
+    shareQQ(title: string, desc: string, thumb: string, link: string) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.shareWithPlatformType(4, title, desc, thumb, link)
-                .then((data) => {
+                .then((data:any) => {
                     callback(data);
-                }, (error) => {
+                }, (error:any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -213,13 +210,13 @@ class UMShare extends NativeEventEmitter {
      * @param thumb
      * @param link
      */
-    shareQzone(title, desc, thumb, link) {
+    shareQzone(title: string, desc: string, thumb: string, link: string) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.shareWithPlatformType(5, title, desc, thumb, link)
-                .then((data) => {
+                .then((data:any) => {
                     callback(data);
-                }, (error) => {
+                }, (error:any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -237,13 +234,13 @@ class UMShare extends NativeEventEmitter {
      * @param thumb
      * @param link
      */
-    shareSina(title, desc, thumb, link) {
+    shareSina(title: string, desc: string, thumb: string, link: string) {
 
         return new Promise(function (callback, errorCallback) {
             UMShareModule.shareWithPlatformType(0, title, desc, thumb, link)
-                .then((data) => {
+                .then((data:any) => {
                     callback(data);
-                }, (error) => {
+                }, (error:any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -261,8 +258,9 @@ class UMShare extends NativeEventEmitter {
     loginWX() {
         return new Promise(function (callback, errorCallback) {
             UMShareModule.login('weixin')
-                .then((data) => {
-                    if(Platform.OS == "android") {
+                .then((data:any) => {
+                    if (Platform.OS == "android") {
+                        let originalResponse:any = {}
                         originalResponse.openid = data.openid;
                         originalResponse.province = data.province;
                         originalResponse.city = data.city;
@@ -273,7 +271,7 @@ class UMShare extends NativeEventEmitter {
                         data.originalResponse = originalResponse;
                     }
                     callback(data);
-                }, (error) => {
+                }, (error:any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -291,9 +289,9 @@ class UMShare extends NativeEventEmitter {
     loginQQ() {
         return new Promise(function (callback, errorCallback) {
             UMShareModule.login('qq')
-                .then((data) => {
+                .then((data:any) => {
                     callback(data);
-                }, (error) => {
+                }, (error:any) => {
                     if (typeof error == 'string') {
                         errorCallback(error);
                     } else {
@@ -304,6 +302,4 @@ class UMShare extends NativeEventEmitter {
     }
 }
 
-UMShare = new UMShare();
-
-module.exports = UMShare;
+export default new UMShare();

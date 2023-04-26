@@ -35,6 +35,7 @@ public class UMAnalyticsModule extends ReactContextBaseJavaModule {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        UMConfigure.preInit(mContext, appkey, channel);
         UMConfigure.init(mContext, appkey
             , channel, UMConfigure.DEVICE_TYPE_PHONE, "");
         UMConfigure.setLogEnabled(openLog);
