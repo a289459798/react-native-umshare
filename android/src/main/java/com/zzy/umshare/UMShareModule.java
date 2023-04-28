@@ -394,6 +394,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
             keys[i] = key;
             ReadableMap obj = sharePlatforms.getMap(key);
             if (key.endsWith("weixin")) {
+                PlatformConfig.setWXFileProvider("com.zzy.umshare.fileprovider");
                 PlatformConfig.setWeixin(obj.getString("appKey"), obj.getString("appSecret"));
             } else if (key.endsWith("qq")) {
                 PlatformConfig.setQQZone(obj.getString("appKey"), obj.getString("appSecret"));
