@@ -21,5 +21,5 @@ Pod::Spec.new do |s|
   s.dependency 'UMShare/Social/QQ', "6.10.2"
   s.dependency 'UMShare/Social/ReducedSina', "6.10.2"
   s.frameworks = 'CoreTelephony','SystemConfiguration'
-  s.library = 'sqlite','z','sqlite3','c++'
+  s.library = 'z','sqlite3','c++'
 end
