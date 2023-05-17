@@ -14,10 +14,12 @@ Pod::Spec.new do |s|
   s.source_files  = "ios/*.{h,m}"
   s.dependency "React"
   s.dependency "UMCommon", "7.3.0"
-    s.dependency "UMDevice", "2.0.1"
-    s.dependency "UMAPM", "1.4.2"
-    s.dependency "UMShare/UI", "6.10.2"
-    s.dependency 'UMShare/Social/WeChat', "6.10.2"
-    s.dependency 'UMShare/Social/QQ', "6.10.2"
-    s.dependency 'UMShare/Social/ReducedSina', "6.10.2"
+  s.dependency "UMDevice", "2.0.1"
+  s.dependency "UMAPM", "1.4.2"
+  s.dependency "UMShare/UI", "6.10.2"
+  s.dependency 'UMShare/Social/WeChat', "6.10.2"
+  s.dependency 'UMShare/Social/QQ', "6.10.2"
+  s.dependency 'UMShare/Social/ReducedSina', "6.10.2"
+  s.frameworks = 'CoreTelephony','SystemConfiguration','MobileCoreServices','CFNetwork'
+  s.library = 'libsqlite','libz','libsqlite3','libc++'
 end
