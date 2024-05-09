@@ -26,7 +26,7 @@ class UMShare {
    * @param thumb
    * @param link
    */
-  share(title: string, desc: string, thumb: string, link: string) {
+  share(title: string, desc: string, thumb: string, link?: string) {
     return new Promise(function (callback, errorCallback) {
       UMShareModule.share(title, desc, thumb, link).then(
         (data: any) => {
@@ -160,7 +160,7 @@ class UMShare {
    * @param thumb
    * @param link
    */
-  shareWX(title: string, desc: string, thumb: string, link: string) {
+  shareWX(title: string, desc: string, thumb: string, link?: string) {
     return new Promise(function (callback, errorCallback) {
       UMShareModule.shareWithPlatformType(1, title, desc, thumb, link).then(
         (data: any) => {
@@ -184,7 +184,7 @@ class UMShare {
    * @param thumb
    * @param link
    */
-  shareWXTimeLine(title: string, desc: string, thumb: string, link: string) {
+  shareWXTimeLine(title: string, desc: string, thumb: string, link?: string) {
     return new Promise(function (callback, errorCallback) {
       UMShareModule.shareWithPlatformType(2, title, desc, thumb, link).then(
         (data: any) => {
