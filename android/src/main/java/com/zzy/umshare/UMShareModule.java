@@ -387,7 +387,7 @@ public class UMShareModule extends ReactContextBaseJavaModule implements Activit
         UMShareAPI.get(mContext).setShareConfig(config);
 
         ReadableMapKeySetIterator readableMapKeySetIterator = sharePlatforms.keySetIterator();
-        String[] keys = new String[3];
+        String[] keys = new String[sharePlatforms.toHashMap().size()];
         int i = 0;
         while (readableMapKeySetIterator.hasNextKey()) {
             String key = readableMapKeySetIterator.nextKey();
