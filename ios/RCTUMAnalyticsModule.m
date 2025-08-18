@@ -33,4 +33,8 @@ RCT_EXPORT_METHOD(event: (NSString *) name) {
   [MobClick event:name];
 }
 
+RCT_EXPORT_METHOD(eventMap: (NSString *) name Attributes:(NSDictionary *)attributes) {
+    [MobClick event:name attributes:attributes];
+}
+
 @end

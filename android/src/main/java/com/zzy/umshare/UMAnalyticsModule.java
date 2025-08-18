@@ -59,4 +59,9 @@ public class UMAnalyticsModule extends ReactContextBaseJavaModule {
     public void event(final String name) {
         MobclickAgent.onEvent(mContext, name);
     }
+
+     @ReactMethod
+    public void eventMap(final String name, final ReadableMap map) {
+        MobclickAgent.onEventObject(mContext, name, map.toHashMap());
+    }
 }

@@ -21,6 +21,10 @@ export default new class Analytics {
         UMAnalytics.event(name)
     }
 
+    eventMap(name: string, map: Object) {
+        UMAnalytics.eventMap(name, map)
+    }
+
     pageBegin(name: string) {
         UMAnalytics.pageBegin(name)
     }
